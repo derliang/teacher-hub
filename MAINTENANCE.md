@@ -68,3 +68,11 @@
 - 若 GitHub Actions 回報沒有寫入權限，請到 Repository → Settings → Actions → General → Workflow permissions 選擇 **Read and write permissions**；如組織政策禁止，需由管理員協助。不放個人存取 Token 在程式碼中。
 - 檢查失敗請在 GitHub → Actions → Sync tool releases 查看日誌；修復原始版本資料或同步腳本後重新執行，勿硬填資料。新工具需擁有者先核准，再由維護者有意識地擴充白名單與驗證策略。
 - GitHub Actions 的 `schedule` 可能略微延遲；靜態網頁沒有即時推播，每日同步是定期檢查，不是發布瞬間就同步。
+
+## 10. 第四張施工中卡片與特別授權（2026-10-15）
+- 使用者已明確核准第四張「平時成績小幫手」，連結本站 `/grade-deploy/`，僅為標示「🚧 施工中」的自助部署原型，不代表程式已可安裝／更新。
+- 桌面首頁每行**最多三張卡片**；平板最多二張，手機一張。保留前三張既有功能與連結。
+- 第四張是前述「只收錄正式公開小工具」規則的**具體例外**，不得因此擴大其他未核准項目；前三張工具的版本追蹤白名單維持不變。
+- 自助部署前端原始碼、規格、測試與後端在私人 `derliang/gas-deploy-helper`；這裡只放公開靜態前台。
+- 使用者說 **push git** 預設是提交私人 `gas-deploy-helper`；說 **發佈網頁** 才是更新公開 `teacher-hub`。接手前請讀私人 repo 的 `AGENTS.md`。
+- 本施工頁沒有可確認的平時成績小幫手正式版本與發布日，不可虛構。
