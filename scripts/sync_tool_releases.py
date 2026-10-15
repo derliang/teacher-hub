@@ -38,7 +38,7 @@ def validate(version, day):
 def latest(repo):
     html = fetch(f"https://raw.githubusercontent.com/derliang/{repo}/main/index.html")
     if repo == "seat-helper":
-        v = match(r"<title>[^<]*?v(\d+(?:\.\d+)+)</title>", html, "seat version")
+        v = match(r"\bAPP_VERSION\s*=\s*['\"]v?(\d+(?:\.\d+)+)['\"]", html, "seat APP_VERSION")
         readme = fetch("https://raw.githubusercontent.com/derliang/seat-helper/main/README.md")
         day = match(r"(?m)^###\s+[^\n]*?v" + re.escape(v) + r"\s*\((\d{4}-\d{2}-\d{2})\)", readme, "seat release date")
         evidence = "README.md version release entry"

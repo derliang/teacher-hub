@@ -62,7 +62,7 @@
 ## 9. GitHub Actions 自動同步（2026-10-15 新增）
 - Workflow：`.github/workflows/sync-tool-releases.yml`，排程每天 **臺灣時間 09:17**，也可在 Actions 頁面點 **Sync tool releases → Run workflow** 手動執行。
 - 同步程式：`scripts/sync_tool_releases.py`，僅能讀取三個已核准的公開 Repo：`seat-helper`、`cleaning-helper`、`exam-helper-clock`。不得從所有 Repository 自動發現並上架。
-- 座位小幫手以 `index.html` 版本和 README 內同版號日期交叉確認；掃地小幫手以 HTML 版號和吻合同一版號的發布提交日期確認；段考小幫手以 `APP_VERSION` 和 `APP_DATE` 確認，不能取過期的 HTML title。
+- 座位小幫手以 `index.html` 的 `APP_VERSION`（不再讀 `<title>`，2026-10-15 起）和 README 內同版號日期交叉確認；掃地小幫手以 HTML 版號和吻合同一版號的發布提交日期確認；段考小幫手以 `APP_VERSION` 和 `APP_DATE` 確認，不能取過期的 HTML title。
 - **沒有可靠資訊即不更新**，任何一個工具的版本查證失敗時，整批不寫入；不得以檢查日期或任意 commit 日期代替。拒絕上游版本倒退、拒絕新增未核准工具。
 - 只有真的偵測到新版，才更新 `tools.json` 與 HTML 備援內容、由 `github-actions[bot]` 提交；不修改工具程式、不修改卡片連結、不自動變更首頁本身的 v1.x 版號。
 - 若 GitHub Actions 回報沒有寫入權限，請到 Repository → Settings → Actions → General → Workflow permissions 選擇 **Read and write permissions**；如組織政策禁止，需由管理員協助。不放個人存取 Token 在程式碼中。
