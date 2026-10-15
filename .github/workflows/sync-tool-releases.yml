@@ -1,0 +1,35 @@
+name: Sync tool releases
+on:
+  schedule:
+    - cron: '17 1 * * *' # Daily 09:17 Taiwan time (UTC+8)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: teacher-hub-release-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check approved tools
+        env:
+          GH_API_TOKEN: ${{ github.token }}
+        run: python scripts/sync_tool_releases.py
+      - name: Commit only actual version changes
+        run: |
+          if git diff --quiet -- tools.json index.html; then
+            echo "No release metadata updates"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools.json index.html
+          git commit -m "chore: sync approved tool release versions"
+          git push
