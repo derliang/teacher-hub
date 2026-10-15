@@ -1,6 +1,6 @@
 {
   "name": "Teacher Hub｜教師小幫手",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-10-15",
-  "changes": "後台原型加入 Google Workspace 登入驗證入口與逐教師、逐 GAS 產品授權設定；尚待配置 Cloud OAuth 與後端服務。"
+  "changes": "七張首頁卡片更新為一致風格的柔和彩色插畫，保留既有連結與佔位狀態。"
 }
