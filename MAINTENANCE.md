@@ -76,3 +76,11 @@
 - 自助部署前端原始碼、規格、測試與後端在私人 `derliang/gas-deploy-helper`；這裡只放公開靜態前台。
 - 使用者說 **push git** 預設是提交私人 `gas-deploy-helper`；說 **發佈網頁** 才是更新公開 `teacher-hub`。接手前請讀私人 repo 的 `AGENTS.md`。
 - 本施工頁沒有可確認的平時成績小幫手正式版本與發布日，不可虛構。
+
+## 11. GAS 候選佔位卡片（2026-10-15）
+- 使用者要求在首頁先展示 GitHub 既有 GAS 專案，供後續挑選；目前新增四張**純佔位**卡片：晨練成績系統（`morning-practice-grade-system`）、線上共筆成績系統（`collaborative-grade-system`）、午餐小幫手（`Lunch-Helper`）、老師隨手記（`teacher-notes`）。
+- 這四張沒有 href、不能點擊，不連私人 Repository、不連 GAS、未有 OAuth 或部署功能；統一標示「🚧 正式版尚未推出，敬請期待」。是否正式納入自助部署平台仍須擁有者核准。
+- 原四張卡片維持原功能：前三張直接使用；第四張平時成績小幫手進入已核准的施工中展示頁。
+- 桌面每行最多三張卡片，平板二張、手機一張。候選卡片不列入 `tools.json` 的已發布程式版本自動追蹤清單，不捏造版號及發布日期。
+- 另有 `grade-system`（GitHub Pages + Supabase）、`class-swap`（本機前端）、`seat-helper-gas-test`（GAS 測試副本）、`gas-deploy-helper`（部署平台本身），不要當成候選正式 GAS 教師工具。
+- **管理後台架構**：現有 Windows 本機管理台位於 `gas-deploy-helper` 並僅本機 `127.0.0.1:4173`；未來雲端管理後台的開發原始碼在 Private `gas-deploy-helper`，實際操作前台可發布於 Teacher Hub 中經後端 OAuth/RBAC 保護的管理頁（例如 `/grade-deploy/admin/`，正式路徑待定）；管理 API/白名單/憑證必須留在受保護的 HTTPS 後端，**雲端後台尚未實作**。
