@@ -58,3 +58,13 @@
 - 每次原工具正式發版後，接手者核對公開版與 GitHub 原始碼、確認版本日期，再更新 `tools.json` 與 HTML 備援文字；若缺少可靠日期，先查證，**不得填今天日期或憑空推測**。
 - 工具版本資訊更新不改變其他卡片，也不代表入口網站功能改版；但入口網站本身有提交變更時，仍應按照第 4 節更新首頁版號、更新紀錄與日期。
 - 新增工具也必須新增其版本資料；未確認版本或日期時，先維持不上架狀態供審核。不得以版本資訊需求為由修改原工具 Repo。
+
+## 9. GitHub Actions 自動同步（2026-10-15 新增）
+- Workflow：`.github/workflows/sync-tool-releases.yml`，排程每天 **臺灣時間 09:17**，也可在 Actions 頁面點 **Sync tool releases → Run workflow** 手動執行。
+- 同步程式：`scripts/sync_tool_releases.py`，僅能讀取三個已核准的公開 Repo：`seat-helper`、`cleaning-helper`、`exam-helper-clock`。不得從所有 Repository 自動發現並上架。
+- 座位小幫手以 `index.html` 版本和 README 內同版號日期交叉確認；掃地小幫手以 HTML 版號和吻合同一版號的發布提交日期確認；段考小幫手以 `APP_VERSION` 和 `APP_DATE` 確認，不能取過期的 HTML title。
+- **沒有可靠資訊即不更新**，任何一個工具的版本查證失敗時，整批不寫入；不得以檢查日期或任意 commit 日期代替。拒絕上游版本倒退、拒絕新增未核准工具。
+- 只有真的偵測到新版，才更新 `tools.json` 與 HTML 備援內容、由 `github-actions[bot]` 提交；不修改工具程式、不修改卡片連結、不自動變更首頁本身的 v1.x 版號。
+- 若 GitHub Actions 回報沒有寫入權限，請到 Repository → Settings → Actions → General → Workflow permissions 選擇 **Read and write permissions**；如組織政策禁止，需由管理員協助。不放個人存取 Token 在程式碼中。
+- 檢查失敗請在 GitHub → Actions → Sync tool releases 查看日誌；修復原始版本資料或同步腳本後重新執行，勿硬填資料。新工具需擁有者先核准，再由維護者有意識地擴充白名單與驗證策略。
+- GitHub Actions 的 `schedule` 可能略微延遲；靜態網頁沒有即時推播，每日同步是定期檢查，不是發布瞬間就同步。
