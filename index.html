@@ -28,7 +28,7 @@
 <article class="card placeholder-card" aria-label="午餐小幫手，正式版尚未推出，敬請期待"><div class="thumb card-illustration"><img src="./images/cards/lunch.svg" alt="lunch 功能插畫" loading="lazy" width="640" height="480"></div><div class="body"><span class="pending-label">GAS 自助部署候選</span><h3>🍱 午餐小幫手</h3><p>整合午餐訂購、菜單管理、金額統計與付款紀錄，讓團體訂餐更方便。</p><span class="pending-cta">🚧 正式版尚未推出，敬請期待</span></div></article>
 <article class="card placeholder-card" aria-label="老師隨手記，正式版尚未推出，敬請期待"><div class="thumb card-illustration"><img src="./images/cards/notes.svg" alt="notes 功能插畫" loading="lazy" width="640" height="480"></div><div class="body"><span class="pending-label">GAS 自助部署候選</span><h3>📝 老師隨手記</h3><p>記錄點名、作業、成績、待辦與家長聯繫事項，集中處理教師日常工作。</p><span class="pending-cta">🚧 正式版尚未推出，敬請期待</span></div></article></div><p class="empty" id="empty">沒有符合的工具，請換個關鍵字試試。</p>
 </main>
-<footer>Teacher Hub · Made for Teachers<br>每一個小工具，都是為了讓老師的日常更輕鬆。<div class="version-meta" id="site-version" aria-live="polite"><strong>首頁版本 v1.8.0</strong>｜更新日期 2026-10-15</div></footer>
+<footer>Teacher Hub · Made for Teachers<br>每一個小工具，都是為了讓老師的日常更輕鬆。<div class="version-meta" id="site-version" aria-live="polite"><strong>首頁版本 v1.8.1</strong>｜更新日期 2026-10-15</div></footer>
 <script>
 fetch('./site.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('metadata');return r.json()}).then(m=>{if(/^\d+\.\d+\.\d+$/.test(m.version)&&/^\d{4}-\d{2}-\d{2}$/.test(m.updated)){document.getElementById('site-version').textContent='首頁版本 v'+m.version+'｜更新日期 '+m.updated}}).catch(()=>{});
 
