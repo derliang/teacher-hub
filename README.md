@@ -10,3 +10,7 @@
 目前僅收錄：座位小幫手、掃地工作小幫手、段考小幫手。整張卡片直接導覽至原本 GitHub Pages 操作頁面。
 
 不自動收錄其他 Repo，不收錄私人、GAS 或被排除的專案。
+
+## 自動同步個別工具版本
+
+每日臺灣時間 09:17 由 [GitHub Actions](.github/workflows/sync-tool-releases.yml) 檢查已核准三個工具的版本與日期；只有確認新資訊時更新首頁卡片及 [tools.json](tools.json)。也可手動執行。操作詳見 [MAINTENANCE.md](MAINTENANCE.md) 第 9 節。
