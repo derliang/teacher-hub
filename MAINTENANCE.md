@@ -84,3 +84,10 @@
 - 桌面每行最多三張卡片，平板二張、手機一張。候選卡片不列入 `tools.json` 的已發布程式版本自動追蹤清單，不捏造版號及發布日期。
 - 另有 `grade-system`（GitHub Pages + Supabase）、`class-swap`（本機前端）、`seat-helper-gas-test`（GAS 測試副本）、`gas-deploy-helper`（部署平台本身），不要當成候選正式 GAS 教師工具。
 - **管理後台架構**：現有 Windows 本機管理台位於 `gas-deploy-helper` 並僅本機 `127.0.0.1:4173`；未來雲端管理後台的開發原始碼在 Private `gas-deploy-helper`，實際操作前台可發布於 Teacher Hub 中經後端 OAuth/RBAC 保護的管理頁（例如 `/grade-deploy/admin/`，正式路徑待定）；管理 API/白名單/憑證必須留在受保護的 HTTPS 後端，**雲端後台尚未實作**。
+
+## 12. 使用者最終挑選的 GAS 佔位名單（2026-10-15，優先於先前第四張連結／候選說明）
+- 正式三工具保留原本可點擊的卡片與原連結。
+- 唯四張 GAS 佔位卡片：`pingshi-grade-helper`（平時成績小幫手）、`morning-practice-grade-system`（晨練成績系統）、`Lunch-Helper`（午餐小幫手）、`teacher-notes`（老師隨手記）。四者均**無任何 href**，並顯示「🚧 正式版尚未推出，敬請期待」。
+- 使用者明確排除 `collaborative-grade-system`（線上共筆成績系統，已停止開發），不得重新加入首頁。
+- 舊的 `/grade-deploy/` 原型檔仍保留作既有網頁資源，但首頁**不再連到它**；要再次上架或開放操作，須使用者另行授權。
+- 桌面每行最多三張，平板最多兩張，手機一張；`tools.json` 僅追蹤三個已正式公開小工具。
