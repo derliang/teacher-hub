@@ -1,6 +1,6 @@
 {
   "name": "Teacher Hub｜教師小幫手",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-10-15",
-  "changes": "新增 GAS 自助部署管理後台施工中原型，含學校、教師授權、產品與部署紀錄展示。"
+  "changes": "後台原型加入 Google Workspace 登入驗證入口與逐教師、逐 GAS 產品授權設定；尚待配置 Cloud OAuth 與後端服務。"
 }
