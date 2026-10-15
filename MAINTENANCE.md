@@ -103,3 +103,9 @@
 - 已建立 `/admin/` 公開靜態展示頁，原始碼權威為 private `gas-deploy-helper/prototype/self-service/admin/index.html`。此頁**沒有實際 Google OAuth、管理員驗證或 API**，所有寫入功能停用；不蒐集或顯示真實教師授權紀錄。
 - 公開 GitHub Pages 無法保護前端檔案本身。將來若要可用的管理後台，必須先建安全的雲端 API，在**每次請求**驗證 Workspace 身分及管理員 RBAC；不能僅靠頁面隱藏或前端條件判斷。
 - 管理頁有固定「返回 Teacher Hub 首頁」連結。正式路線的管理員登入／教師 CRUD／部署紀錄尚未實作，不可對外宣稱上線。
+
+## 15. 後台 Workspace 認證與逐產品授權（2026-10-15）
+- 管理員並非只核准一個全產品通用的教師白名單；應依**教師 × GAS 產品**逐項決定可安裝與更新的 GAS 工具。不同 GAS 工具的授權需在後端獨立核對。
+- 已在公開 `/admin/` 頁加入 Google Identity Services 登入入口和逐產品授權設定 UI，需另部署私人 `gas-deploy-helper/cloud/self-service-auth` HTTPS 後端與前台 `admin/auth-config.json`（只放公開 Client ID、API base URL）才可線上實測。
+- **目前未提供 OAuth Client ID、Cloud Run URL、正式授權資料庫，故認證尚未實際測通**。絕不得用填寫 Email 當作登入成功。未配置時保持關閉。
+- 此階段不具真正 GAS 安裝更新能力，不得進行測試性 Google 寫入。完整規格見私人 `gas-deploy-helper/docs/self-service/AUTH_AND_PRODUCT_GRANTS.md`。
