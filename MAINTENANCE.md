@@ -109,3 +109,7 @@
 - 已在公開 `/admin/` 頁加入 Google Identity Services 登入入口和逐產品授權設定 UI，需另部署私人 `gas-deploy-helper/cloud/self-service-auth` HTTPS 後端與前台 `admin/auth-config.json`（只放公開 Client ID、API base URL）才可線上實測。
 - **目前未提供 OAuth Client ID、Cloud Run URL、正式授權資料庫，故認證尚未實際測通**。絕不得用填寫 Email 當作登入成功。未配置時保持關閉。
 - 此階段不具真正 GAS 安裝更新能力，不得進行測試性 Google 寫入。完整規格見私人 `gas-deploy-helper/docs/self-service/AUTH_AND_PRODUCT_GRANTS.md`。
+
+## 16. 七張卡片插畫（2026-10-15）
+- 首頁改用 `/images/cards/{seat,cleaning,exam,grade,morning,lunch,notes}.svg` 靜態插畫；原三張直接執行工具與四張 GAS 卡片的功能與互動不變。
+- 現階段上架的是可由 GitHub 純文字 API 提交的配色協調向量插畫，**不是對話中產生的高解析度 PNG 原圖**；將來若要換成原圖，可在有二進位上傳工具的環境另行替換，並驗證負載與尺寸。
