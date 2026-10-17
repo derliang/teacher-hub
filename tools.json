@@ -4,10 +4,10 @@
   "tools": [
     {
       "id": "seat-helper",
-      "version": "3.2.1",
-      "releaseDate": "2026-10-08",
+      "version": "3.2.3",
+      "releaseDate": "2026-10-17",
       "source": "https://github.com/derliang/seat-helper",
-      "dateEvidence": "README.md v3.2.1 版本紀錄與版本提交"
+      "dateEvidence": "README.md version release entry"
     },
     {
       "id": "cleaning-helper",
@@ -18,8 +18,8 @@
     },
     {
       "id": "exam-helper-clock",
-      "version": "2.28.3",
-      "releaseDate": "2026-10-15",
+      "version": "2.28.4",
+      "releaseDate": "2026-10-17",
       "source": "https://github.com/derliang/exam-helper-clock",
       "dateEvidence": "index.html APP_VERSION and APP_DATE"
     }
