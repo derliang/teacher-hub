@@ -63,7 +63,7 @@
 - Workflow：`.github/workflows/sync-tool-releases.yml`，排程**每 3 小時**一次（臺灣時間 01:17、04:17、07:17、10:17、13:17、16:17、19:17、22:17；2026-10-18 由每日一次改為每 3 小時），也可在 Actions 頁面點 **Sync tool releases → Run workflow** 手動執行。
 - 同步程式：`scripts/sync_tool_releases.py`，僅能讀取三個已核准的公開 Repo：`seat-helper`、`cleaning-helper`、`exam-helper-clock`。不得從所有 Repository 自動發現並上架。
 - 座位小幫手以 `index.html` 的 `APP_VERSION`（不再讀 `<title>`，2026-10-15 起）和 README 內同版號日期交叉確認；掃地小幫手以 HTML 版號和吻合同一版號的發布提交日期確認；段考小幫手以 `APP_VERSION` 和 `APP_DATE` 確認，不能取過期的 HTML title。
-- **沒有可靠資訊即不更新**，任何一個工具的版本查證失敗時，整批不寫入；不得以檢查日期或任意 commit 日期代替。拒絕上游版本倒退、拒絕新增未核准工具。
+- **沒有可靠資訊即不更新**，某個工具的版本查證失敗時，該工具維持原記錄、其他工具照常同步，且該次執行仍標示為失敗以便察覺（2026-10-19 起，原為整批不寫入）；不得以檢查日期或任意 commit 日期代替。掃地小幫手發布日以發布提交的台灣日期（UTC+8）為準，提交訊息為「Bump version to vX」或以「vX」開頭皆可辨識。拒絕上游版本倒退、拒絕新增未核准工具。
 - 只有真的偵測到新版，才更新 `tools.json` 與 HTML 備援內容、由 `github-actions[bot]` 提交；不修改工具程式、不修改卡片連結、不自動變更首頁本身的 v1.x 版號。
 - 若 GitHub Actions 回報沒有寫入權限，請到 Repository → Settings → Actions → General → Workflow permissions 選擇 **Read and write permissions**；如組織政策禁止，需由管理員協助。不放個人存取 Token 在程式碼中。
 - 檢查失敗請在 GitHub → Actions → Sync tool releases 查看日誌；修復原始版本資料或同步腳本後重新執行，勿硬填資料。新工具需擁有者先核准，再由維護者有意識地擴充白名單與驗證策略。
