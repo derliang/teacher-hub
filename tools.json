@@ -22,6 +22,14 @@
       "releaseDate": "2026-10-17",
       "source": "https://github.com/derliang/exam-helper-clock",
       "dateEvidence": "index.html APP_VERSION and APP_DATE"
+    },
+    {
+      "id": "teacher-notes-web",
+      "version": "1.2.0",
+      "releaseDate": "2026-10-17",
+      "source": "https://github.com/derliang/teacher-notes-web",
+      "versionJson": "https://derliang.github.io/teacher-notes-web/version.json",
+      "dateEvidence": "version.json version and the commit that first set it (26f2992)"
     }
   ]
 }

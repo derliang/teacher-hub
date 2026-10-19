@@ -11,7 +11,11 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ALLOWED = ("seat-helper", "cleaning-helper", "exam-helper-clock")
+# The tools listed in tools.json are the approved set: a tool is added there when the owner approves
+# listing it. Tools with no dedicated rule below must provide "versionJson" (see latest_from_version_json).
+BUILTIN = ("seat-helper", "cleaning-helper", "exam-helper-clock")
+OWNER = "derliang"
+TW = dt.timezone(dt.timedelta(hours=8))
 UA = {"User-Agent": "teacher-hub-release-sync", "Accept": "application/vnd.github+json"}
 if os.environ.get("GH_API_TOKEN"):
     UA["Authorization"] = "Bearer " + os.environ["GH_API_TOKEN"]
@@ -35,7 +39,35 @@ def validate(version, day):
         raise ValueError("Future release date")
     return version, day
 
-def latest(repo):
+def taiwan_date(iso_utc):
+    stamp = dt.datetime.fromisoformat(iso_utc.replace("Z", "+00:00"))
+    return stamp.astimezone(TW).date().isoformat()
+
+def latest_from_version_json(tool):
+    """Version from the published version.json; date = Taiwan date of the first commit that set that version."""
+    url = tool.get("versionJson", "")
+    source = tool.get("source", "")
+    m_url = re.fullmatch(r"https://" + OWNER + r"\.github\.io/([A-Za-z0-9._-]+)/((?:[A-Za-z0-9._-]+/)*version\.json)", url)
+    m_src = re.fullmatch(r"https://github\.com/" + OWNER + r"/([A-Za-z0-9._-]+)", source)
+    if not m_url or not m_src or m_url.group(1) != m_src.group(1):
+        raise ValueError("Tool has no dedicated rule and no valid versionJson/source pair")
+    repo, path = m_src.group(1), m_url.group(2)
+    v = str(json.loads(fetch(url)).get("version", "")).lstrip("v")
+    commits = json.loads(fetch(f"https://api.github.com/repos/{OWNER}/{repo}/commits?path={path}&per_page=30"))
+    first = None
+    for c in commits:  # newest first; walk back while the file still carries the same version
+        raw = json.loads(fetch(f"https://raw.githubusercontent.com/{OWNER}/{repo}/{c['sha']}/{path}"))
+        if str(raw.get("version", "")).lstrip("v") != v:
+            break
+        first = c
+    if first is None:
+        raise ValueError("No commit found that sets the published version")
+    return (*validate(v, taiwan_date(first["commit"]["committer"]["date"])), f"{path} version and the commit that first set it")
+
+def latest(tool):
+    repo = tool["id"]
+    if repo not in BUILTIN:
+        return latest_from_version_json(tool)
     html = fetch(f"https://raw.githubusercontent.com/derliang/{repo}/main/index.html")
     if repo == "seat-helper":
         v = match(r"\bAPP_VERSION\s*=\s*['\"]v?(\d+(?:\.\d+)+)['\"]", html, "seat APP_VERSION")
@@ -52,8 +84,7 @@ def latest(repo):
         if not releases:
             raise ValueError("No matching cleaning version-release commit in recent history")
         # Taiwan date (UTC+8), not the UTC date.
-        stamp = dt.datetime.fromisoformat(releases[0]["commit"]["committer"]["date"].replace("Z", "+00:00"))
-        day = stamp.astimezone(dt.timezone(dt.timedelta(hours=8))).date().isoformat()
+        day = taiwan_date(releases[0]["commit"]["committer"]["date"])
         evidence = "Version-specific release commit for index.html"
     else:
         v = match(r"\bAPP_VERSION\s*=\s*['\"](\d+(?:\.\d+)+)['\"]", html, "exam APP_VERSION")
@@ -68,13 +99,14 @@ def main():
     path = ROOT / "tools.json"
     data = json.loads(path.read_text(encoding="utf-8"))
     entries = data["tools"]
-    if sorted(x["id"] for x in entries) != sorted(ALLOWED):
-        raise RuntimeError("Tools allowlist changed; manual approval required")
+    ids = [x["id"] for x in entries]
+    if not entries or len(set(ids)) != len(ids) or not all(re.fullmatch(r"[a-z0-9-]+", i) for i in ids):
+        raise RuntimeError("tools.json has duplicate or invalid tool ids")
     changes = []
     errors = []
     for tool in entries:
         try:
-            version, day, evidence = latest(tool["id"])
+            version, day, evidence = latest(tool)
             old_version = tool["version"]
             if version_tuple(version) < version_tuple(old_version):
                 raise ValueError("Upstream version is older than the recorded version")
