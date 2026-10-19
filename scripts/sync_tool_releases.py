@@ -46,10 +46,14 @@ def latest(repo):
         v = match(r"<title>[^<]*?v(\d+(?:\.\d+)+)</title>", html, "cleaning version")
         url = f"https://api.github.com/repos/derliang/{repo}/commits?path=index.html&per_page=100"
         commits = json.loads(fetch(url))
-        releases = [c for c in commits if re.search(r"(?i)(bump version|release|發版|版本).*?v" + re.escape(v) + r"(?![\d.])", c["commit"]["message"])]
+        # Release commit: "Bump version to vX" style, or a message that starts with "vX".
+        pattern = r"(?i)(?:(?:bump version|release|發版|版本).*?v|^v)" + re.escape(v) + r"(?![\d.])"
+        releases = [c for c in commits if re.search(pattern, c["commit"]["message"])]
         if not releases:
             raise ValueError("No matching cleaning version-release commit in recent history")
-        day = releases[0]["commit"]["committer"]["date"][:10]
+        # Taiwan date (UTC+8), not the UTC date.
+        stamp = dt.datetime.fromisoformat(releases[0]["commit"]["committer"]["date"].replace("Z", "+00:00"))
+        day = stamp.astimezone(dt.timezone(dt.timedelta(hours=8))).date().isoformat()
         evidence = "Version-specific release commit for index.html"
     else:
         v = match(r"\bAPP_VERSION\s*=\s*['\"](\d+(?:\.\d+)+)['\"]", html, "exam APP_VERSION")
@@ -83,10 +87,13 @@ def main():
                 tool["dateEvidence"] = evidence
         except (ValueError, KeyError, urllib.error.URLError, TimeoutError) as exc:
             errors.append(f"{tool['id']}: {exc}")
+    # A tool that fails verification keeps its recorded values; the others still sync.
     if errors:
-        raise RuntimeError("Cannot safely sync all sources; no changes written:\n" + "\n".join(errors))
+        print("Skipped (verification failed, recorded values kept):\n" + "\n".join(errors))
     if not changes:
         print("No new releases")
+        if errors:
+            raise SystemExit(1)
         return
     # Update static fallback as well as metadata; do not alter links or visual styling.
     html_path = ROOT / "index.html"
@@ -100,6 +107,8 @@ def main():
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     html_path.write_text(html, encoding="utf-8")
     print("\n".join(changes))
+    if errors:
+        raise SystemExit(1)  # still flag the run as failed so the broken source is noticed
 
 if __name__ == "__main__":
     main()
