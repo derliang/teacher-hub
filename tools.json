@@ -11,8 +11,8 @@
     },
     {
       "id": "cleaning-helper",
-      "version": "2.10",
-      "releaseDate": "2026-10-18",
+      "version": "2.11",
+      "releaseDate": "2026-10-21",
       "source": "https://github.com/derliang/cleaning-helper",
       "dateEvidence": "Version-specific release commit for index.html"
     },
