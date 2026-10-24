@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2026 derliang. All rights reserved.
+ * Non-commercial use only. Sheng Kung Girls' High School
+ * students and staff may use this software free of charge
+ * for non-commercial educational purposes.
+ * Other schools must obtain authorization by email.
+ * Contact: derliang@gmail.com
+ * See LICENSE.md for full terms.
+ */
 /* Client public data only. Never place client secret or credentials in this file. */
 let conf=null,identity=null,token=null,registry=null;
 const message=()=>document.querySelector('#auth-message');
