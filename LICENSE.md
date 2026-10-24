@@ -1,6 +1,6 @@
 # 使用授權與著作權聲明
 
-Copyright © 2026 【著作權人姓名待確認】（公開作者識別：derliang）
+Copyright © 2026 黃德亮（公開作者識別：derliang）
 保留所有權利（All Rights Reserved）。
 聯絡信箱：derliang@gmail.com
 
