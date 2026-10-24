@@ -7,7 +7,7 @@
 - 入口版本：[site.json](site.json)
 - 歷史：[CHANGELOG.md](CHANGELOG.md)
 
-目前僅收錄：座位小幫手、掃地工作小幫手、段考小幫手。整張卡片直接導覽至原本 GitHub Pages 操作頁面。
+目前收錄：座位小幫手、掃地工作小幫手、段考小幫手、老師隨手記（Beta）、午餐小幫手（Beta）。整張卡片直接導覽至原本 GitHub Pages 操作頁面。
 
 不自動收錄其他 Repo，不收錄私人、GAS 或被排除的專案。
 

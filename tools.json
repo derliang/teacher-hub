@@ -30,6 +30,14 @@
       "source": "https://github.com/derliang/teacher-notes-web",
       "versionJson": "https://derliang.github.io/teacher-notes-web/version.json",
       "dateEvidence": "version.json version and the commit that first set it (26f2992)"
+    },
+    {
+      "id": "lunch-helper-web",
+      "version": "1.2.0",
+      "releaseDate": "2026-10-24",
+      "source": "https://github.com/derliang/lunch-helper-web",
+      "versionJson": "https://derliang.github.io/lunch-helper-web/version.json",
+      "dateEvidence": "version.json version and the commit that first set it"
     }
   ]
 }
