@@ -14,3 +14,11 @@
 ## 自動同步個別工具版本
 
 每日臺灣時間 09:17 由 [GitHub Actions](.github/workflows/sync-tool-releases.yml) 檢查已核准三個工具的版本與日期；只有確認新資訊時更新首頁卡片及 [tools.json](tools.json)。也可手動執行。操作詳見 [MAINTENANCE.md](MAINTENANCE.md) 第 9 節。
+
+## 著作權與使用授權
+
+© 2026 derliang. All rights reserved.
+
+本程式免費提供聖功女中師生於非營利教育用途使用；**所有使用者均限非營利使用**。其他學校或機構請先寄信至 [derliang@gmail.com](mailto:derliang@gmail.com) 申請，並取得作者 Email 回覆同意。程式碼重製、修改、散布、再發布及商業使用均須另行授權。
+
+完整條款請參閱 [LICENSE.md](./LICENSE.md)。

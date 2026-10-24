@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 derliang. All rights reserved.
+# Non-commercial use only. See LICENSE.md.
+# Contact: derliang@gmail.com
 """Sync only approved public GitHub Pages tools' release metadata.
 Fail closed if the source does not provide a credible version/date pair.
 """
