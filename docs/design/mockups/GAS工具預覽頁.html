@@ -159,17 +159,22 @@ a.card:hover .go svg{translate:3px 0}
   .steps li{border-bottom:0;border-right:1px solid var(--line-soft)}.steps li:last-child{border-right:0}
 }
 
-.foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:30px 34px;font-size:13px;color:var(--ink3);line-height:1.9}
-.foot-site .wrap{display:grid;gap:4px}
-.foot-site strong{font-family:var(--serif);font-size:16px;color:var(--ink)}
-.foot-site .top-link{display:inline-flex;align-items:center;min-height:44px;color:var(--primary);font-weight:700;text-decoration:none;font-size:14px}
-.foot-site .cr a{padding:12px 0}
+.foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:28px 26px;font-size:13px;color:var(--ink3);line-height:1.8}
+.foot-site .wrap{display:grid;gap:6px}
+.foot-site .fhead{display:flex;align-items:center;justify-content:space-between;gap:8px 16px}
+.foot-site strong{font-family:var(--serif);font-size:16px;line-height:1.3;color:var(--ink)}
+.foot-site .top-link{display:inline-flex;align-items:center;min-height:44px;padding-inline:2px;color:var(--primary);font-weight:700;text-decoration:none;font-size:14px;white-space:nowrap}
+.foot-site .top-link:hover{text-decoration:underline}
+.foot-site .fnote{margin:0}
+.foot-site .flegal{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0 16px;margin-top:8px;padding-top:6px;border-top:1px solid var(--line-soft)}
+.foot-site .cr a{display:inline-block;padding:12px 0}
+.foot-site .version-meta{font-variant-numeric:tabular-nums}
 
 /* 1b：兩扇門 + 橫列卡片 */
 .doors{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);margin-top:28px}
 @media (min-width:600px){.doors{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .door{display:grid;gap:6px;padding:22px 22px 18px;border-radius:4px;text-decoration:none;min-width:0}
-.door.a{background:var(--primary);color:var(--on-primary)}
+.door.a{background:var(--primary);color:var(--on-primary);border:1px solid var(--primary)}
 .door.b{background:var(--surface);color:var(--ink);border:1px solid var(--brass-line)}
 .door .k{font-size:12.5px;letter-spacing:.2em;font-weight:700}
 .door.a .k{color:var(--on-primary-2)}.door.b .k{color:var(--brass)}
@@ -178,6 +183,12 @@ a.card:hover .go svg{translate:3px 0}
 .door.a p{color:var(--on-primary-2)}.door.b p{color:var(--ink2)}
 .door .n{display:flex;align-items:baseline;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid currentColor;font-size:14px;font-weight:700}
 .door .n b{font-family:var(--serif);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+a.door{transition:transform .2s,border-color .2s,box-shadow .2s}
+a.door:hover,a.door:focus-visible{transform:translateY(-3px);box-shadow:0 16px 28px -20px var(--shadow)}
+a.door.a:hover,a.door.a:focus-visible{border-color:var(--brass-line)}
+a.door.b:hover,a.door.b:focus-visible{border-color:var(--brass)}
+.door .n svg{transition:translate .2s}
+a.door:hover .n svg,a.door:focus-visible .n svg{translate:3px 0}
 .hero.b .wrap{display:block}
 .hero.b h1{max-width:12em}
 @media (min-width:1024px){.hero.b{padding-block:72px 56px}.hero.b .doors{margin-top:44px}.door{padding:28px 30px 22px}.door h2{font-size:32px}}
@@ -325,6 +336,7 @@ textarea.inp{min-height:96px;padding:10px 12px;resize:vertical}
 .vstack{display:grid;gap:16px;padding-bottom:56px}
 
 @media(prefers-reduced-motion:reduce){.card,.go svg{transition:none}a.card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){a.door,.door .n svg{transition:none}a.door:hover,a.door:focus-visible{transform:none}a.door:hover .n svg,a.door:focus-visible .n svg{translate:none}}
 
 
 .nav{position:sticky;top:0;z-index:20}
@@ -338,7 +350,7 @@ textarea.inp{min-height:96px;padding:10px 12px;resize:vertical}
 <div class="site">
 <p class="screen-label"><b>畫面 1</b>｜施工中工具的預覽頁（以平時成績小幫手為例；路徑 gas/&lt;工具 id&gt;/）</p>
 <nav class="nav" aria-label="主要導覽"><div class="wrap"><a class="brand" href="#"><span class="mark" aria-hidden="true">T</span><span><b>Teacher Hub</b><small>教師小幫手</small></span></a><div class="links"><a href="#">立即可用<em>4</em></a><a href="#" aria-current="true">GAS 部署<em>3</em></a></div><div class="tabs"><a href="#">立即可用 <em>4</em></a><a href="#" aria-current="true">GAS 部署 <em>3</em></a></div></div></nav><div class="wrap narrow"><nav class="crumbs" aria-label="所在位置"><a href="#">Teacher Hub 首頁</a><span aria-hidden="true">›</span><a href="#">GAS 部署</a><span aria-hidden="true">›</span><b aria-current="page">平時成績小幫手</b></nav><div class="pagehead"><span class="kicker">GAS 自助部署・施工中・可預覽</span><h1>平時成績小幫手</h1><p>教師專屬的平時成績管理系統，用學校 Google Workspace 帳號自行安裝與更新。</p></div><div class="stack"><div class="banner" role="status"><i></i><div><b>施工中</b>｜目前僅供預覽介面，尚未開放 Google 登入、GAS 安裝或更新。</div></div><div class="does"><section class="panel"><h3>主要功能</h3><ul><li>獨立 GAS 程式</li><li>自行安裝</li><li>自行更新</li></ul></section><section class="panel"><h3>為什麼要部署到 GAS</h3><p>每位老師各自持有獨立的 GAS 與成績試算表，平台只管理程式，不碰成績資料。</p></section></div><section class="panel"><h2>上線前的檢查</h2><p>四項都完成，這個工具才會出現在自助部署平台。</p><ol class="prog"><li class="done"><span class="d"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span>擁有者核准進入自助部署</span></li><li class=""><span class="d">·</span><span>正式版通過審核，並確認資料相容</span></li><li class=""><span class="d">·</span><span>管理員開通教師帳號</span></li><li class=""><span class="d">·</span><span>通過真實環境驗收</span></li></ol></section><a class="back" href="#">← 返回 GAS 部署區</a></div></div>
-<footer class="foot-site"><div class="wrap"><strong>Teacher Hub · Made for Teachers</strong><span>每一個小工具，都是為了讓老師的日常更輕鬆。</span><span>首頁版本 vX.Y.Z｜更新日期 YYYY-MM-DD</span><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="#">授權說明</a></span><a class="top-link" href="#">回到頂端 ↑</a></div></footer>
+<footer class="foot-site"><div class="wrap"><div class="fhead"><strong>Teacher Hub · Made for Teachers</strong><a class="top-link" href="#">回到頂端 ↑</a></div><p class="fnote">每一個小工具，都是為了讓老師的日常更輕鬆。</p><div class="flegal"><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="#">授權說明</a></span><span class="version-meta">首頁版本 vX.Y.Z｜更新日期 YYYY-MM-DD</span></div></div></footer>
 </div>
 </body>
 </html>

@@ -152,6 +152,29 @@ class Home(unittest.TestCase):
         self.assertTrue(has(run(cd.check_versions, html), "不一致"))
 
 
+class FooterAndDoors(unittest.TestCase):
+    def test_top_link_alone_on_its_own_row(self):
+        m = re.search(r'<a class="top-link"[^>]*>[^<]*</a>', HOME)
+        html = HOME.replace(m.group(0), "", 1).replace('<p class="fnote">', m.group(0) + '<p class="fnote">', 1)
+        self.assertTrue(has(run(cd.check_footer, "t", html), "品牌列"))
+
+    def test_two_top_links(self):
+        html = HOME.replace('<p class="fnote">', '<a class="top-link" href="#top">回到頂端 ↑</a><p class="fnote">', 1)
+        self.assertTrue(has(run(cd.check_footer, "t", html), "剛好一個"))
+
+    def test_missing_legal_row(self):
+        html = HOME.replace('class="flegal"', 'class="legal"', 1)
+        self.assertTrue(has(run(cd.check_footer, "t", html), "法律列"))
+
+    def test_door_without_hover(self):
+        html = HOME.replace("a.door.a:hover,a.door.a:focus-visible{border-color", "a.doorz.a:hover,a.doorz.a:focus-visible{border-color", 1)
+        self.assertTrue(has(run(cd.check_home, "t", html), "兩扇門缺少互動回饋"))
+
+    def test_door_hover_without_border_change(self):
+        html = HOME.replace("a.door.b:hover,a.door.b:focus-visible{border-color:var(--brass)}", "a.door.b:hover,a.door.b:focus-visible{color:red}", 1)
+        self.assertTrue(has(run(cd.check_home, "t", html), "兩扇門缺少互動回饋"))
+
+
 class Sub(unittest.TestCase):
     def test_missing_crumbs(self):
         html = re.sub(r'<nav class="crumbs".*?</nav>', "", MOCK, flags=re.S)

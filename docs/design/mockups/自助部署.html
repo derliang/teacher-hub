@@ -159,17 +159,22 @@ a.card:hover .go svg{translate:3px 0}
   .steps li{border-bottom:0;border-right:1px solid var(--line-soft)}.steps li:last-child{border-right:0}
 }
 
-.foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:30px 34px;font-size:13px;color:var(--ink3);line-height:1.9}
-.foot-site .wrap{display:grid;gap:4px}
-.foot-site strong{font-family:var(--serif);font-size:16px;color:var(--ink)}
-.foot-site .top-link{display:inline-flex;align-items:center;min-height:44px;color:var(--primary);font-weight:700;text-decoration:none;font-size:14px}
-.foot-site .cr a{padding:12px 0}
+.foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:28px 26px;font-size:13px;color:var(--ink3);line-height:1.8}
+.foot-site .wrap{display:grid;gap:6px}
+.foot-site .fhead{display:flex;align-items:center;justify-content:space-between;gap:8px 16px}
+.foot-site strong{font-family:var(--serif);font-size:16px;line-height:1.3;color:var(--ink)}
+.foot-site .top-link{display:inline-flex;align-items:center;min-height:44px;padding-inline:2px;color:var(--primary);font-weight:700;text-decoration:none;font-size:14px;white-space:nowrap}
+.foot-site .top-link:hover{text-decoration:underline}
+.foot-site .fnote{margin:0}
+.foot-site .flegal{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0 16px;margin-top:8px;padding-top:6px;border-top:1px solid var(--line-soft)}
+.foot-site .cr a{display:inline-block;padding:12px 0}
+.foot-site .version-meta{font-variant-numeric:tabular-nums}
 
 /* 1b：兩扇門 + 橫列卡片 */
 .doors{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);margin-top:28px}
 @media (min-width:600px){.doors{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .door{display:grid;gap:6px;padding:22px 22px 18px;border-radius:4px;text-decoration:none;min-width:0}
-.door.a{background:var(--primary);color:var(--on-primary)}
+.door.a{background:var(--primary);color:var(--on-primary);border:1px solid var(--primary)}
 .door.b{background:var(--surface);color:var(--ink);border:1px solid var(--brass-line)}
 .door .k{font-size:12.5px;letter-spacing:.2em;font-weight:700}
 .door.a .k{color:var(--on-primary-2)}.door.b .k{color:var(--brass)}
@@ -178,6 +183,12 @@ a.card:hover .go svg{translate:3px 0}
 .door.a p{color:var(--on-primary-2)}.door.b p{color:var(--ink2)}
 .door .n{display:flex;align-items:baseline;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid currentColor;font-size:14px;font-weight:700}
 .door .n b{font-family:var(--serif);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+a.door{transition:transform .2s,border-color .2s,box-shadow .2s}
+a.door:hover,a.door:focus-visible{transform:translateY(-3px);box-shadow:0 16px 28px -20px var(--shadow)}
+a.door.a:hover,a.door.a:focus-visible{border-color:var(--brass-line)}
+a.door.b:hover,a.door.b:focus-visible{border-color:var(--brass)}
+.door .n svg{transition:translate .2s}
+a.door:hover .n svg,a.door:focus-visible .n svg{translate:3px 0}
 .hero.b .wrap{display:block}
 .hero.b h1{max-width:12em}
 @media (min-width:1024px){.hero.b{padding-block:72px 56px}.hero.b .doors{margin-top:44px}.door{padding:28px 30px 22px}.door h2{font-size:32px}}
@@ -325,6 +336,7 @@ textarea.inp{min-height:96px;padding:10px 12px;resize:vertical}
 .vstack{display:grid;gap:16px;padding-bottom:56px}
 
 @media(prefers-reduced-motion:reduce){.card,.go svg{transition:none}a.card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){a.door,.door .n svg{transition:none}a.door:hover,a.door:focus-visible{transform:none}a.door:hover .n svg,a.door:focus-visible .n svg{translate:none}}
 
 
 .nav{position:sticky;top:0;z-index:20}
@@ -362,7 +374,7 @@ textarea.inp{min-height:96px;padding:10px 12px;resize:vertical}
 <div class="wrap narrow"><nav class="crumbs" aria-label="所在位置"><a href="#">Teacher Hub 首頁</a><span aria-hidden="true">›</span><a href="#">GAS 部署</a><span aria-hidden="true">›</span><a href="#">自助部署</a><span aria-hidden="true">›</span><b aria-current="page">更新</b></nav><div class="stack" style="padding-top:8px"><div class="wiz"><ol class="rail"><li class="done">選擇專案</li><li class="done">檢查結果</li><li class="cur">確認更新</li><li class="">完成</li></ol><div class="wizbody"><div class="mini"><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></div><p>步驟 <b>3／4</b>｜確認更新</p></div><h2 style="font-family:var(--serif);font-size:24px;margin:0">確認更新</h2><p style="margin:0;color:var(--ink2)">按下開始後，系統會依序進行下列步驟，網址不變。</p><label class="chk"><input type="checkbox" checked disabled> 我確認要更新「平時成績小幫手－teacher01」到 v2.8.0（網址不變）</label><ol class="prog"><li class="done"><span class="d"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span>再次核對專案與部署</span></li><li class="run"><span class="d">…</span><span>寫入新版程式</span></li><li class=""><span class="d">·</span><span>建立版本</span></li><li class=""><span class="d">·</span><span>原網址指向新版本並回讀驗證</span></li><li class=""><span class="d">·</span><span>登記完成</span></li></ol></div></div></div></div>
 <p class="screen-label"><b>畫面 13</b>｜更新・第 4 步：完成</p>
 <div class="wrap narrow"><nav class="crumbs" aria-label="所在位置"><a href="#">Teacher Hub 首頁</a><span aria-hidden="true">›</span><a href="#">GAS 部署</a><span aria-hidden="true">›</span><a href="#">自助部署</a><span aria-hidden="true">›</span><b aria-current="page">更新</b></nav><div class="stack" style="padding-top:8px"><div class="wiz"><ol class="rail"><li class="done">選擇專案</li><li class="done">檢查結果</li><li class="done">確認更新</li><li class="cur">完成</li></ol><div class="wizbody"><div class="mini"><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p>步驟 <b>4／4</b>｜完成</p></div><div class="notice ok"><b>更新完成：v2.8.0</b><br>網址沒有改變。GAS 版本 #7 → #8。請打開網址確認可以正常登入使用。</div><dl class="kv"><dt>系統網址</dt><dd class="mono">https://script.google.com/macros/s/AKfycb…/exec</dd></dl><div class="btns"><button class="btn" type="button">回到我的系統</button></div></div></div></div></div>
-<footer class="foot-site"><div class="wrap"><strong>Teacher Hub · Made for Teachers</strong><span>每一個小工具，都是為了讓老師的日常更輕鬆。</span><span>首頁版本 vX.Y.Z｜更新日期 YYYY-MM-DD</span><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="#">授權說明</a></span><a class="top-link" href="#">回到頂端 ↑</a></div></footer>
+<footer class="foot-site"><div class="wrap"><div class="fhead"><strong>Teacher Hub · Made for Teachers</strong><a class="top-link" href="#">回到頂端 ↑</a></div><p class="fnote">GAS 自助部署平台｜程式更新只影響程式本身；系統執行時如何使用資料，仍由各系統自行負責。有問題請聯絡管理員。</p><div class="flegal"><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="#">授權說明</a></span></div></div></footer>
 </div>
 </body>
 </html>

@@ -97,7 +97,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .hero p{margin:0;color:var(--ink2);font-size:15.5px;max-width:30em}
 .doors{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);margin-top:28px}
 .door{display:grid;gap:6px;padding:22px 22px 18px;border-radius:4px;text-decoration:none;min-width:0}
-.door.a{background:var(--primary);color:var(--on-primary)}
+.door.a{background:var(--primary);color:var(--on-primary);border:1px solid var(--primary)}
 .door.b{background:var(--surface);color:var(--ink);border:1px solid var(--brass-line)}
 .door .k{font-size:12.5px;letter-spacing:.2em;font-weight:700}
 .door.a .k{color:var(--on-primary-2)}.door.b .k{color:var(--brass)}
@@ -106,6 +106,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .door.a p{color:var(--on-primary-2)}.door.b p{color:var(--ink2)}
 .door .n{display:flex;align-items:baseline;justify-content:space-between;min-height:44px;margin-top:10px;padding-top:10px;border-top:1px solid currentColor;font-size:14px;font-weight:700}
 .door .n b{font-family:var(--serif);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+a.door{transition:transform .2s,border-color .2s,box-shadow .2s}
+a.door:hover,a.door:focus-visible{transform:translateY(-3px);box-shadow:0 16px 28px -20px var(--shadow)}
+a.door.a:hover,a.door.a:focus-visible{border-color:var(--brass-line)}
+a.door.b:hover,a.door.b:focus-visible{border-color:var(--brass)}
+.door .n svg{transition:translate .2s}
+a.door:hover .n svg,a.door:focus-visible .n svg{translate:3px 0}
 @media (min-width:600px){.hero{padding-block:52px 44px}.hero h1{font-size:44px}.doors{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1024px){.hero{padding-block:72px 56px}.hero h1{font-size:56px}.doors{margin-top:44px}.door{padding:28px 30px 22px}.door h2{font-size:32px}}
 
@@ -185,13 +191,19 @@ a.card:hover .go svg{translate:3px 0}
 .empty{margin:0;padding:48px 0;color:var(--ink2)}
 
 /* 頁尾（只有一個） */
-.foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:30px 34px;font-size:13px;color:var(--ink3);line-height:1.9}
-.foot-site .wrap{display:grid;gap:4px}
-.foot-site strong{font-family:var(--serif);font-size:16px;color:var(--ink)}
-.foot-site .top-link{display:inline-flex;align-items:center;min-height:44px;color:var(--primary);font-weight:700;text-decoration:none;font-size:14px}
-.foot-site .copyright-note a{display:inline-block;padding:12px 0}
+.foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:28px 26px;font-size:13px;color:var(--ink3);line-height:1.8}
+.foot-site .wrap{display:grid;gap:6px}
+.foot-site .fhead{display:flex;align-items:center;justify-content:space-between;gap:8px 16px}
+.foot-site strong{font-family:var(--serif);font-size:16px;line-height:1.3;color:var(--ink)}
+.foot-site .top-link{display:inline-flex;align-items:center;min-height:44px;padding-inline:2px;color:var(--primary);font-weight:700;text-decoration:none;font-size:14px;white-space:nowrap}
+.foot-site .top-link:hover{text-decoration:underline}
+.foot-site .fnote{margin:0}
+.foot-site .flegal{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0 16px;margin-top:8px;padding-top:6px;border-top:1px solid var(--line-soft)}
+.foot-site .cr a{display:inline-block;padding:12px 0}
+.foot-site .version-meta{font-variant-numeric:tabular-nums}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.go svg{transition:none}a.card:hover,a.card:focus-visible{transform:none}.go svg{translate:none!important}}
+@media(prefers-reduced-motion:reduce){a.door,.door .n svg{transition:none}a.door:hover,a.door:focus-visible{transform:none}a.door:hover .n svg,a.door:focus-visible .n svg{translate:none}}
 </style>
 </head>
 <body id="top">
@@ -238,7 +250,7 @@ a.card:hover .go svg{translate:3px 0}
 <div class="wrap"><p class="empty" id="empty" role="status" hidden>沒有符合的工具，請換個關鍵字試試。</p></div>
 </main>
 
-<footer class="foot-site"><div class="wrap"><strong>Teacher Hub · Made for Teachers</strong><span>每一個小工具，都是為了讓老師的日常更輕鬆。</span><span class="version-meta" id="site-version" aria-live="polite">首頁版本 v1.13.0｜更新日期 2026-10-25</span><span class="copyright-note"><small>© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></small></span><a class="top-link" href="#top">回到頂端 ↑</a></div></footer>
+<footer class="foot-site"><div class="wrap"><div class="fhead"><strong>Teacher Hub · Made for Teachers</strong><a class="top-link" href="#top">回到頂端 ↑</a></div><p class="fnote">每一個小工具，都是為了讓老師的日常更輕鬆。</p><div class="flegal"><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></span><span class="version-meta" id="site-version" aria-live="polite">首頁版本 v1.13.1｜更新日期 2026-10-25</span></div></div></footer>
 
 <script>
 fetch('./site.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('metadata');return r.json()}).then(m=>{if(/^\d+\.\d+\.\d+$/.test(m.version)&&/^\d{4}-\d{2}-\d{2}$/.test(m.updated)){document.getElementById('site-version').textContent='首頁版本 v'+m.version+'｜更新日期 '+m.updated}}).catch(()=>{});
