@@ -1,0 +1,74 @@
+<!doctype html>
+<!--
+Copyright (c) 2026 derliang. All rights reserved.
+Non-commercial use only. See LICENSE.md.
+Authorization inquiries: derliang@gmail.com
+
+GAS 自助部署｜老師頁（/deploy/）。這是前端介面：老師在這裡操作，執行時呼叫私人後端（授權閘門）與 Google Apps Script API。
+外觀與互動規則見 docs/design/DESIGN.md 與 docs/deploy/；樣式在 assets/app.css（token 與 docs/design/tokens.css 一致）。
+-->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2f0ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1524" media="(prefers-color-scheme: dark)">
+<meta name="referrer" content="no-referrer">
+<title>GAS 自助部署｜Teacher Hub</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body id="top">
+<nav class="nav" aria-label="主要導覽"><div class="wrap">
+  <a class="brand" href="../"><span class="mark" aria-hidden="true">T</span><span><b>Teacher Hub</b><small>教師小幫手</small></span></a>
+  <div class="links"><a href="../#usable">立即可用</a><a href="../#gas" aria-current="true">GAS 部署</a></div>
+  <div class="acct hidden" id="who"><span class="em" id="whoEmail"></span><button class="lo" id="signOutBtn" type="button">登出</button></div>
+  <div class="tabs"><a href="../#usable">立即可用</a><a href="../#gas" aria-current="true">GAS 部署</a></div>
+</div></nav>
+
+<main class="wrap narrow">
+  <nav class="crumbs" aria-label="所在位置"><a href="../">Teacher Hub 首頁</a><span aria-hidden="true">›</span><a href="../#gas">GAS 部署</a><span aria-hidden="true">›</span><b aria-current="page">自助部署</b></nav>
+  <div class="pagehead">
+    <span class="kicker">WORKSPACE SELF-SERVICE</span>
+    <h1>自己的系統，自己安裝、自己更新。</h1>
+    <p>用學校 Google 帳號登入後，就能把已核准的 GAS 小幫手安裝到你自己的帳號，或把已安裝的系統更新到最新正式版——網址不變，不需要安裝任何軟體。</p>
+  </div>
+
+  <div class="stack">
+    <div class="does">
+      <section class="panel"><h3>這裡會做的事</h3><ul>
+        <li><span>在<b>你自己的</b> Google 帳號建立 GAS 專案並發布成網頁</span></li>
+        <li><span>把已安裝的系統更新到管理員核准的正式版，<b>網址不變</b></span></li>
+        <li><span>更新前先比對程式差異，有疑慮就停下來</span></li>
+      </ul></section>
+      <section class="panel"><h3>這裡不會做的事</h3><ul class="no">
+        <li><span>不讀取、不修改你的試算表、學生名冊與成績</span></li>
+        <li><span>不保存你的 Google 授權（只在這個分頁裡使用）</span></li>
+        <li><span>不會替你建立第二個網址冒充更新</span></li>
+      </ul></section>
+    </div>
+
+    <div id="status"></div>
+
+    <section class="panel hidden" id="signInPanel">
+      <h2>用學校 Google 帳號登入</h2>
+      <p>只接受已開放學校的 Google Workspace 帳號；個人 Gmail 無法使用。</p>
+      <div id="signInBtn"></div>
+    </section>
+
+    <section class="vstack" id="products"></section>
+
+    <section class="panel hidden" id="flowPanel" aria-live="polite"></section>
+  </div>
+</main>
+
+<footer class="foot-site"><div class="wrap">
+  <strong>Teacher Hub · Made for Teachers</strong>
+  <span>GAS 自助部署平台｜程式更新只影響程式本身；系統執行時如何使用資料，仍由各系統自行負責。有問題請聯絡管理員。</span>
+  <span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></span>
+  <a class="top-link" href="#top">回到頂端 ↑</a>
+</div></footer>
+
+<script type="module" src="assets/teacher.js"></script>
+</body>
+</html>

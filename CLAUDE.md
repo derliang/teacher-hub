@@ -14,9 +14,17 @@
 - 頁面清冊在 [docs/design/PAGES.md](docs/design/PAGES.md) 與 `docs/design/pages.json`；唯一的 token 來源是 `docs/design/tokens.css`。
 - **改到任何 `.html` 或樣式，提 PR 前先跑 `python scripts/check_design.py`，全部通過才行**；再依 PAGES.md 第 5 節做人工檢查，結果寫進 PR 說明。
 - repo 內每個 `.html` 都要登記並有對應模擬頁；新增頁面照 PAGES.md 第 6 節的流程（先登記、先設計、再實作）。
-- 不為了讓檢查通過而改檢查或 `tokens.css`；不新增例外頁。`grade-deploy/`、`admin/` 是會到期的舊風格過渡頁。
+- 不為了讓檢查通過而改檢查或 `tokens.css`；不新增例外頁。`grade-deploy/`（現為轉址頁）、`admin/` 是會到期的過渡頁。
 - 未完成的 GAS 工具只有「候選」（不可點）與「施工中・可預覽」（連到 `gas/<id>/` 預覽頁，不得有按鈕或登入）兩種呈現，見 DESIGN.md 5.1。
 - 修改檢查程式後，跑 `python scripts/test_check_design.py` 確認它仍抓得到走樣。
+
+## 自助部署前端（`deploy/`）
+
+- **前端在這個 repo、後端在私人 repo**（擁有者裁示，2026-10-25）：`deploy/`、`deploy/admin/` 的介面與規範都在這裡；授權閘門、白名單、正式版發布包在私人 `derliang/gas-deploy-helper`。分工見 [docs/deploy/README.md](docs/deploy/README.md)。
+- 改 `deploy/` 前必讀 [docs/deploy/DESIGN_SPEC.md](docs/deploy/DESIGN_SPEC.md)；做精靈（分步安裝與更新）另讀 [docs/deploy/WIZARD_SPEC.md](docs/deploy/WIZARD_SPEC.md)，未實作前不要自行發明流程。
+- 提 PR 前除了 `python scripts/check_design.py`，還要跑 `node --test scripts/test_deploy_frontend.mjs scripts/test_wizard_contract.mjs`，全部通過。不得弱化這些測試。
+- `deploy/config.json` 的 `gateUrl` 是上線開關，沒有擁有者明確同意與真實 Google 驗收前保持空白；不得在公開檔案放 token、密鑰或教師名單。
+- 不改 `deploy/assets/engine.js`、`core.js`、`gs-check.js` 的邏輯與錯誤訊息，除非擁有者同意並同步私人 repo 的測試（`gs-check.js` 的掃描段要與私人 repo 的 `src/gs-syntax.mjs` 逐字相同）。
 
 ## 工具上架與下架
 
@@ -27,7 +35,7 @@
 
 ## 兩個容易混淆的指令
 
-- 說「push git」：指私人 repo `derliang/gas-deploy-helper` 的提交，不是這個 repo。
+- 說「push git」：指私人 repo `derliang/gas-deploy-helper`（後端）的提交，不是這個 repo。
 - 說「發佈網頁」：才是更新這個公開 repo（GitHub Pages）。合併 `main` 前仍要先確認，並驗證 Pages 已發布。
 
 ## 不可動的東西

@@ -71,7 +71,7 @@ Authorization inquiries: derliang@gmail.com
 
 ### 3.2 「GAS 部署」區（自助部署）
 
-GAS 工具的程式與規則在私人 repo `derliang/gas-deploy-helper`；Teacher Hub 這裡只放卡片與公開靜態前台。**「push git」是提交到私人 repo；「發佈網頁」才是更新 teacher-hub，兩者不可互換。**
+GAS 工具的**後端**（授權閘門、產品 manifest、正式版發布包）與其規則在私人 repo `derliang/gas-deploy-helper`；Teacher Hub 這裡放卡片與**前端介面**（`deploy/`，原始碼在本 repo）。**「push git」是提交到私人 repo（後端）；「發佈網頁」才是更新 teacher-hub（前端），兩者不可互換。**
 
 1. [ ] 擁有者核准這個產品進入自助部署，且已回答第 1 節（多人使用必須有 GAS 或線上資料庫後端）。
 2. [ ] 在 `gas-deploy-helper` 的 `selfservice/gate/Gate_10_products.gs` 新增產品 manifest（`id`、正式版 repo、受管理檔案、版號規則、Web App 設定、首次授權函式、安裝完成後老師要自己做的步驟）。通用核心不得寫死單一產品名稱。
@@ -79,8 +79,8 @@ GAS 工具的程式與規則在私人 repo `derliang/gas-deploy-helper`；Teache
 4. [ ] 管理員逐一授權教師（教師 × 產品逐項勾選）。
 5. [ ] 通過真實 Google 驗收：個人 Gmail 被拒、未授權教師被拒、首次安裝、在編輯器授權後網址可開、同網址更新且網址不變、`hd` 不符被拒。**驗收前不得宣稱可用。**
 6. [ ] 首頁卡片依狀態呈現：驗收前一律是「候選」或「施工中・可預覽」，不連到尚未開放的功能；施工中的卡片連到 `gas/<id>/` 預覽頁（規則見 DESIGN.md 5.1，並登記在 `pages.json`）；驗收通過、且擁有者說「發佈網頁」後，卡片才連到 `deploy/?product=<id>` 並改標「即開即用」，同時刪除預覽頁。
-6a. [ ] 從 `gas-deploy-helper` 輸出到本站的 `deploy/` 頁面，要先通過 `check_design.py`（樣式必須使用 `tokens.css`），再合併；檢查失敗時修私人 repo 的原始碼並重新輸出，不改輸出檔（PAGES.md 第 7 節）。
-7. [ ] 發佈前掃描公開輸出，不得含 token、OAuth Client Secret、私鑰、Email 名單（`selfservice/publish.mjs` 內建掃描）。
+6a. [ ] `deploy/` 前端的任何改動，要先通過 `python scripts/check_design.py` 與 `node --test scripts/test_deploy_frontend.mjs scripts/test_wizard_contract.mjs`（樣式必須使用 `tokens.css`），再合併。`deploy/config.json` 的 `gateUrl` 是**上線開關**：留空時頁面只顯示「平台尚未開放」；通過第 5 項真實驗收、且擁有者說「發佈網頁」後才填入閘門網址（PAGES.md 第 7 節）。
+7. [ ] `deploy/` 是公開檔案，不得含 token、OAuth Client Secret、私鑰、Email 名單（`scripts/test_deploy_frontend.mjs` 內建掃描，會在提交前擋下）。
 8. [ ] GAS 工具不列入 `tools.json` 的版本追蹤：每位老師安裝的版本不同，正式版與日期顯示在自助部署頁內。
 
 ### 3.3 卡片內容欄位
@@ -133,5 +133,5 @@ GAS 工具的程式與規則在私人 repo `derliang/gas-deploy-helper`；Teache
 | 改頁面外觀 | 讀 DESIGN.md，沿用 tokens，不要寫死色碼；完成後跑 `python scripts/check_design.py` |
 | 新增任何頁面 | 讀 PAGES.md 第 6 節：先登記、先有模擬頁、再實作、跑檢查、人工檢查 |
 | 做出「施工中」的 GAS 工具頁 | 讀 DESIGN.md 5.1：預覽頁不得有按鈕或登入 |
-| 說「push git」 | 指 `gas-deploy-helper`（私人）的提交，不是 teacher-hub |
+| 說「push git」 | 指 `gas-deploy-helper`（私人、後端）的提交，不是 teacher-hub |
 | 說「發佈網頁」 | 指更新公開的 teacher-hub；合併 `main` 前仍要確認 |

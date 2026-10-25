@@ -17,9 +17,9 @@
       "kind": "deploy",
       "nav": "sub",
       "title": "GAS 自助部署（老師端）",
-      "status": "planned",
+      "status": "live",
       "mockup": "docs/design/mockups/自助部署.html",
-      "note": "由私人 repo gas-deploy-helper 的 selfservice/publish.mjs 產生；通過真實 Google 驗收且擁有者說「發佈網頁」後才會出現。出現後必須通過檢查才能合併。"
+      "note": "前端原始碼在本 repo（公開）；執行時呼叫私人後端（授權閘門）。deploy/config.json 的 gateUrl 為空時只顯示「平台尚未開放」。"
     },
     {
       "path": "deploy/admin/index.html",
@@ -27,7 +27,7 @@
       "kind": "admin",
       "nav": "sub",
       "title": "部署平台管理",
-      "status": "planned",
+      "status": "live",
       "mockup": "docs/design/mockups/部署管理.html",
       "note": "同上。"
     },
@@ -45,10 +45,10 @@
       "level": 1,
       "kind": "legacy",
       "nav": "none",
-      "title": "平時成績部署原型（舊風格過渡頁）",
+      "title": "舊連結轉址頁（原平時成績部署原型）",
       "status": "legacy",
-      "expires": "deploy/index.html 發布並取代它時刪除",
-      "note": "舊原型，尚未套用新規範。只檢查檔頭版權、返回首頁連結與「施工中」標示。"
+      "expires": "舊連結不再有人使用時刪除（已由 deploy/ 取代，只保留自動轉址）",
+      "note": "只放自動轉址與連結，沒有介面；仍只檢查檔頭版權、返回首頁連結與「施工中」標示。"
     },
     {
       "path": "admin/index.html",

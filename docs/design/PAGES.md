@@ -34,16 +34,16 @@ Authorization inquiries: derliang@gmail.com
 | 路徑 | 層級 | 類型 | 狀態 | 模擬頁 |
 |---|---|---|---|---|
 | `index.html` | L0 | 首頁 | 上線 | `mockups/首頁.html` |
-| `deploy/index.html` | L1 | 自助部署（老師端） | 待建（驗收後由 gas-deploy-helper 發布） | `mockups/自助部署.html` |
-| `deploy/admin/index.html` | L2 | 部署管理 | 待建（同上） | `mockups/部署管理.html` |
+| `deploy/index.html` | L1 | 自助部署（老師端，前端介面） | 上線（閘門網址未設定時只顯示「平台尚未開放」） | `mockups/自助部署.html` |
+| `deploy/admin/index.html` | L2 | 部署管理（前端介面） | 上線（同上） | `mockups/部署管理.html` |
 | `gas/*/index.html` | L1 | GAS 工具預覽頁（每個候選或施工中的工具一頁） | 規則已定，尚無頁面 | `mockups/GAS工具預覽頁.html` |
-| `grade-deploy/index.html` | L1 | 平時成績部署原型 | **舊風格過渡頁（例外）** | 無 |
+| `grade-deploy/index.html` | L1 | 舊連結轉址頁（原平時成績部署原型） | **過渡頁（例外）** | 無 |
 | `admin/index.html` | L2 | 管理後台原型 | **舊風格過渡頁（例外）** | 無 |
 | `docs/design/mockups/*.html` | — | 模擬頁（只有假資料） | 設計參考 | 本身 |
 
 ### 例外：舊風格過渡頁
-- `grade-deploy/`、`admin/` 是舊原型，原始碼權威在私人 repo，尚未套用新規範。它們被列為**例外**，只做最低限度檢查：檔頭版權、返回首頁連結、明確標示「施工中」。
-- 到期條件：`deploy/index.html`、`deploy/admin/index.html` 發布並取代它們時，整個資料夾刪除，並同步移除 `pages.json` 的例外與首頁卡片連結。
+- `grade-deploy/` 現在只是舊連結的自動轉址頁（原型已由 `deploy/` 取代）；`admin/` 是尚未取代的舊管理後台原型。兩者被列為**例外**，只做最低限度檢查：檔頭版權、返回首頁連結、明確標示「施工中」。
+- 到期條件：`grade-deploy/` 在舊連結不再有人使用時刪除；`admin/` 在 `deploy/admin/` 通過真實 Google 驗收並取代它時刪除。刪除時同步移除 `pages.json` 的例外。
 - 在到期前，不得再新增新的例外，也不得把例外頁當成新頁面的範本。
 
 ## 4. 每一層必備的東西
@@ -76,14 +76,15 @@ PR 說明要寫「看過什麼」。至少：
 5. **人工檢查**（第 5 節），結果寫進 PR 說明。
 6. **刪除或搬移頁面**：同步改 `pages.json`、本文件與所有連到它的卡片、麵包屑；到期的例外一併移除。
 
-## 7. 私人 repo 發布進來的頁面
+## 7. 自助部署的前端與後端
 
-`/deploy/` 與 `/deploy/admin/` 的原始碼在私人 repo `derliang/gas-deploy-helper`（`selfservice/web/`），由 `selfservice/publish.mjs` 輸出到本站。
+`/deploy/` 與 `/deploy/admin/` 是**前端介面**，原始碼就在本 repo（`deploy/`）；它們執行時呼叫的**後端**（授權閘門等）在私人 repo `derliang/gas-deploy-helper`，不公開。分工與本機驗收方法見 [../deploy/README.md](../deploy/README.md)。
 
 - 這些頁面的樣式可以放在外部樣式表（例如 `<link rel="stylesheet" href="assets/app.css">`），`check_design.py` 會讀取頁面引用的本地樣式表並套用同樣的規則；Google Fonts 等外部網址不在檢查範圍。
-- 這些頁面進入本站時，**以本 repo 的 DESIGN.md 與 tokens.css 為準**；私人 repo 的樣式（目前的 `assets/app.css`）要改成使用同一套 token，不得保留自己的一套色彩。
-- 發布前先在本 repo 的分支放入輸出檔，跑 `check_design.py`，通過才可合併。檢查失敗時修私人 repo 的原始碼再重新輸出，不要直接改輸出檔（會與原始碼脫節）。
-- 功能與文字規則由私人 repo 決定；外觀由本 repo 決定。
+- 這些頁面**以本 repo 的 DESIGN.md 與 tokens.css 為準**：`deploy/assets/app.css` 的 token 區塊必須與 `tokens.css` 逐字相同，不得保留自己的一套色彩。
+- 改動前端後，跑 `python scripts/check_design.py`，以及自助部署前端專用的 `node --test scripts/test_deploy_frontend.mjs scripts/test_wizard_contract.mjs`（舊 class 不殘留、js 不含內聯樣式、id 都存在、不含機密、精靈契約等），通過才可合併。
+- 安裝與更新的功能規則、授權與安全邊界由私人 repo 決定；外觀與介面行為由本 repo 決定。
+- `deploy/config.json` 的 `gateUrl` 是上線開關：留空時頁面只顯示「平台尚未開放」。填入前必須通過真實 Google 驗收並取得擁有者同意。
 - 「push git」與「發佈網頁」的區別不變。
 
 ## 8. 檢查項目清單（`check_design.py` 目前會查的）
@@ -99,5 +100,7 @@ PR 說明要寫「看過什麼」。至少：
 | GAS 工具預覽頁 | 沒有按鈕、登入或授權；有候選或施工中橫幅；有「返回 GAS 部署區」 |
 | tokens | 淺色與深色下，文字與底色的對比都 ≥ 4.5:1 |
 | 例外頁 | 檔頭版權、返回首頁連結、「施工中」標示 |
+| 自助部署前端（`node --test scripts/test_deploy_frontend.mjs`） | token 與 `tokens.css` 一致、無寫死色碼／emoji／內聯樣式、舊 class 不殘留、導覽連結、`$('#id')` 都存在、`stepList` 行為、不含機密 |
+| 精靈契約（`node --test scripts/test_wizard_contract.mjs`） | 精靈開始實作後，強制檢查 `docs/deploy/WIZARD_SPEC.md` 的硬性規則 |
 
 要加檢查項目時，連同本表一起更新。
