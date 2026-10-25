@@ -151,10 +151,28 @@ def check_common(rel, html, page):
         err(rel, "不得使用 iframe")
 
 
-def check_style(rel, html):
-    styles = "\n".join(re.findall(r"<style[^>]*>(.*?)</style>", html, flags=re.S))
-    if not styles:
-        err(rel, "找不到 <style>")
+def linked_css(rel, html, base):
+    """讀出頁面以 <link rel="stylesheet"> 引用的本地樣式表（外部網址如 Google Fonts 不算）。"""
+    out = []
+    for m in re.finditer(r"<link\b[^>]*>", html):
+        tag = m.group(0)
+        if not re.search(r'\brel="stylesheet"', tag):
+            continue
+        href = re.search(r'\bhref="([^"]+)"', tag)
+        if not href or href.group(1).startswith(("http://", "https://", "//", "data:")):
+            continue
+        path = (base / href.group(1).split("#")[0].split("?")[0]).resolve()
+        if path.exists():
+            out.append(path.read_text(encoding="utf-8"))
+        else:
+            err(rel, f"引用的樣式表不存在：{href.group(1)}")
+    return out
+
+
+def check_style(rel, html, base=ROOT):
+    styles = "\n".join(re.findall(r"<style[^>]*>(.*?)</style>", html, flags=re.S) + linked_css(rel, html, base))
+    if not styles.strip():
+        err(rel, "找不到 <style> 或本地樣式表")
         return
     light, dmedia, dattr = token_blocks(styles)
     if not light:
@@ -405,7 +423,7 @@ def main():
         else:
             base = (ROOT / rel).parent
             check_common(rel, html, entry)
-            check_style(rel, html)
+            check_style(rel, html, base)
             check_text(rel, html)
             check_images(rel, html, base)
             check_footer(rel, html)
