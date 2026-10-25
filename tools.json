@@ -18,14 +18,14 @@
     },
     {
       "id": "exam-helper-clock",
-      "version": "2.28.4",
-      "releaseDate": "2026-10-17",
+      "version": "2.29.0",
+      "releaseDate": "2026-10-25",
       "source": "https://github.com/derliang/exam-helper-clock",
       "dateEvidence": "index.html APP_VERSION and APP_DATE"
     },
     {
       "id": "teacher-notes-web",
-      "version": "1.5.3",
+      "version": "1.6.0",
       "releaseDate": "2026-10-25",
       "source": "https://github.com/derliang/teacher-notes-web",
       "versionJson": "https://derliang.github.io/teacher-notes-web/version.json",
