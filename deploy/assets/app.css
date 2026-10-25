@@ -211,10 +211,15 @@ textarea.inp{min-height:96px;padding:10px 12px;resize:vertical}
 .tw select.inp{min-width:84px}
 
 /* ===== 頁尾 ===== */
-.foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:30px 34px;font-size:13px;color:var(--ink3);line-height:1.9}
-.foot-site .wrap{display:grid;gap:4px}
-.foot-site strong{font-family:var(--serif);font-size:16px;color:var(--ink)}
-.foot-site .top-link{display:inline-flex;align-items:center;min-height:44px;color:var(--primary);font-weight:700;text-decoration:none;font-size:14px}
+.foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:28px 26px;font-size:13px;color:var(--ink3);line-height:1.8}
+.foot-site .wrap{display:grid;gap:6px}
+.foot-site .fhead{display:flex;align-items:center;justify-content:space-between;gap:8px 16px}
+.foot-site strong{font-family:var(--serif);font-size:16px;line-height:1.3;color:var(--ink)}
+.foot-site .top-link{display:inline-flex;align-items:center;min-height:44px;padding-inline:2px;color:var(--primary);font-weight:700;text-decoration:none;font-size:14px;white-space:nowrap}
+.foot-site .top-link:hover{text-decoration:underline}
+.foot-site .fnote{margin:0}
+.foot-site .flegal{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0 16px;margin-top:8px;padding-top:6px;border-top:1px solid var(--line-soft)}
 .foot-site .cr a{display:inline-block;padding:12px 0}
+.foot-site .version-meta{font-variant-numeric:tabular-nums}
 
 @media (prefers-reduced-motion:reduce){.prog .run .d{animation:none}}

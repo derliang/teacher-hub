@@ -246,6 +246,19 @@ def check_footer(rel, html):
         err(rel, "頁尾版權句「© 2026 derliang」必須剛好出現一次")
     if "LICENSE.md" not in html or "授權說明" not in html:
         err(rel, "頁尾缺少授權說明連結")
+    if len(re.findall(r'class="top-link"', html)) != 1:
+        err(rel, "頁尾必須剛好一個「回到頂端」連結（.top-link）")
+    if not re.search(r'<div class="fhead">\s*<strong>[^<]*</strong>\s*<a class="top-link"[^>]*>[^<]*</a>\s*</div>', html):
+        err(rel, "頁尾「回到頂端」必須在品牌列（.fhead）右側，不可單獨成列")
+    if 'class="flegal"' not in html:
+        err(rel, "頁尾缺少法律列（.flegal：版權句與授權說明）")
+
+
+def check_doors(rel, html):
+    """兩扇門是可點的入口，必須有 hover 與鍵盤聚焦的回饋（外框變色）。"""
+    for sel in (r"a\.door\.a:hover", r"a\.door\.b:hover", r"a\.door\.a:focus-visible", r"a\.door\.b:focus-visible"):
+        if not re.search(sel + r"[^{]*\{[^}]*border-color", html):
+            err(rel, f"兩扇門缺少互動回饋規則（{sel.replace(chr(92), '')} 要改 border-color）")
 
 
 def section_blocks(html):
@@ -261,6 +274,7 @@ def check_home(rel, html):
     doors = re.findall(r'class="door [ab]"', html)
     if len(doors) != 2:
         err(rel, f"首頁需要兩扇門，找到 {len(doors)} 個")
+    check_doors(rel, html)
     secs = section_blocks(html)
     for need in ("usable", "gas"):
         if need not in secs:
@@ -316,6 +330,7 @@ def check_home_basic(rel, html):
         err(rel, "缺少頂端導覽 <nav class=\"nav\">")
     if len(re.findall(r'class="door [ab]"', html)) != 2:
         err(rel, "首頁模擬頁需要兩扇門")
+    check_doors(rel, html)
 
 
 def check_sub(rel, html, kind):
