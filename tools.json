@@ -4,15 +4,15 @@
   "tools": [
     {
       "id": "seat-helper",
-      "version": "3.2.3",
-      "releaseDate": "2026-10-17",
+      "version": "3.3.0",
+      "releaseDate": "2026-10-25",
       "source": "https://github.com/derliang/seat-helper",
       "dateEvidence": "README.md version release entry"
     },
     {
       "id": "cleaning-helper",
-      "version": "2.11",
-      "releaseDate": "2026-10-21",
+      "version": "2.13",
+      "releaseDate": "2026-10-25",
       "source": "https://github.com/derliang/cleaning-helper",
       "dateEvidence": "Version-specific release commit for index.html"
     },
@@ -25,7 +25,7 @@
     },
     {
       "id": "teacher-notes-web",
-      "version": "1.4.5",
+      "version": "1.5.3",
       "releaseDate": "2026-10-25",
       "source": "https://github.com/derliang/teacher-notes-web",
       "versionJson": "https://derliang.github.io/teacher-notes-web/version.json",
