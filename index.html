@@ -8,39 +8,256 @@ Authorization inquiries: derliang@gmail.com
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f7f9fc">
-<meta name="description" content="Teacher Hub 教師小幫手：座位安排、掃地工作分配、段考時鐘、老師隨手記、午餐小幫手，點選卡片即可使用。">
+<meta name="theme-color" content="#f2f0ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1524" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Teacher Hub 教師小幫手：座位安排、掃地工作分配、段考時鐘、老師隨手記，點選卡片即可使用。">
 <title>Teacher Hub｜教師小幫手</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
 <style>
-:root{font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:#1c3048;background:#f7f9fc}
-*{box-sizing:border-box}body{margin:0}a{color:inherit}header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 max(5%,calc((100% - 1120px)/2));background:#fff;border-bottom:1px solid #e8edf4}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.5px}.brand-icon{display:grid;place-items:center;background:#2665db;color:white;width:38px;height:38px;border-radius:12px;font-size:22px}.brand small{display:block;font-weight:500;color:#8390a2;font-size:11px;letter-spacing:0}.header-note{font-size:12px;color:#8995a6}.hero{text-align:center;padding:65px 20px 54px;background:radial-gradient(ellipse at 50% 0%,#e2ebff,#f7f9fc 70%)}.eyebrow{display:inline-block;color:#3263aa;background:#e8f0ff;border:1px solid #d6e5ff;padding:7px 15px;border-radius:50px;font-size:11px;letter-spacing:1.2px;font-weight:750}.hero h1{font-size:clamp(30px,5vw,46px);letter-spacing:-1.6px;margin:19px 0 12px;line-height:1.25}.hero p{font-size:15px;color:#6c7e95;line-height:1.9;margin:0}.container{max-width:1120px;margin:auto;padding:12px 25px 85px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:24px}.toolbar h2{font-size:21px;margin:0}.toolbar h2 span{font-size:12px;background:#e9f0fc;color:#5374ac;padding:4px 10px;border-radius:20px;margin-left:5px}.toolbar p{margin:6px 0 0;color:#8a98aa;font-size:13px}.search{min-width:230px;max-width:290px;width:100%;border:1px solid #e1e8f0;border-radius:12px;padding:13px 15px;font:inherit;font-size:13px;color:#1c3048;background:#fff;outline:0}.search:focus{border-color:#6597e7;box-shadow:0 0 0 3px #dae9ff}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.card{display:flex;flex-direction:column;overflow:hidden;text-decoration:none;border:1px solid #e4eaf2;background:#fff;border-radius:17px;box-shadow:0 8px 26px #172e5110;transition:transform .18s,box-shadow .18s,border-color .18s}.card:hover,.card:focus-visible{transform:translateY(-5px);box-shadow:0 16px 34px #1d3a6222;border-color:#abc7f4;outline:0}.thumb{height:184px;display:grid;place-items:center;overflow:hidden;padding:25px}.seat-bg{background:linear-gradient(145deg,#d9e9ff,#b8d4fb)}.clean-bg{background:linear-gradient(145deg,#e2f6e9,#bce6d0)}.clock-bg{background:linear-gradient(145deg,#f0e9ff,#dacefa)}.mock{width:88%;max-width:260px;min-height:138px;background:#fff;box-shadow:0 12px 30px #293b601e;border-radius:10px;padding:15px;transform:rotate(-3deg)}.mock .bar{height:8px;background:#e9eff9;width:59%;border-radius:10px;margin-bottom:14px}.chairs{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.chairs i{height:20px;border-radius:5px;background:#b5d1f8;border:1px solid #91b8ed}.chairs i:nth-child(3n){background:#d3e4fb}.clean .bar{background:#d9f2e3}.task{display:flex;align-items:center;gap:9px;margin-top:9px}.task b{width:19px;height:19px;background:#ccecd9;border-radius:5px}.task i{height:9px;background:#e5f2ea;border-radius:5px;flex:1}.task em{font-style:normal;font-size:12px;color:#2c956b}.clean{transform:rotate(3deg)}.clock{display:flex;align-items:center;flex-direction:column;transform:rotate(-2deg);text-align:center}.clock small{font-size:11px;color:#8a75bc}.clock strong{font-size:38px;letter-spacing:2px;color:#694db9}.clock .progress{height:8px;width:92%;border-radius:8px;background:linear-gradient(90deg,#9079d9 74%,#ede8fb 74%);margin:5px}.clock .line{height:15px;width:90%;border-radius:5px;background:#f2eefd;margin:6px}.body{display:flex;flex-direction:column;flex:1;padding:23px}.tag{align-self:flex-start;font-size:11px;color:#326cb9;background:#eef5ff;padding:6px 9px;border-radius:6px;font-weight:700}.tag.green{color:#27825a;background:#ecf9f0}.tag.purple{color:#7656b5;background:#f4efff}.body h3{font-size:20px;margin:14px 0 10px}.body p{color:#69798d;font-size:13px;line-height:1.85;margin:0 0 26px;flex:1}.cta{display:flex;align-items:center;justify-content:space-between;border-radius:10px;padding:14px 15px;background:#2365dc;color:#fff;font-size:13px;font-weight:750}.green-cta{background:#248b64}.purple-cta{background:#7958c7}.card:hover .cta{filter:brightness(.93)}.empty{text-align:center;color:#7b8aa0;margin:45px 0;display:none}footer{border-top:1px solid #e7ebf2;background:#fff;color:#8896a7;text-align:center;padding:29px 15px;font-size:12px;line-height:2}
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.header-note{display:none}}
-@media(max-width:570px){header{height:68px;padding:0 20px}.hero{padding:44px 18px 37px}.hero p{font-size:13px}.container{padding:12px 19px 60px}.toolbar{align-items:stretch;flex-direction:column;gap:16px}.search{max-width:none}.grid{grid-template-columns:1fr;gap:16px}.thumb{height:175px}.body{padding:21px}}
-@media(prefers-reduced-motion:reduce){.card{transition:none}}
-.version-meta{font-size:12px;margin-top:9px;color:#64748b}.version-meta strong{color:#405774}@media(max-width:570px){.version-meta{font-size:11px}}.app-meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:-12px 0 18px;font-size:12px;color:#64748b}.app-meta strong{font-weight:800;color:#334b6b}.app-meta .date{color:#64748b}.grade-bg{background:linear-gradient(145deg,#e4f3f6,#badce5)}.grade-mock{transform:rotate(-2deg)}.grade-mock .bar{background:#d6eaf0}.grade-row{display:flex;align-items:center;gap:7px;margin:8px 0}.grade-row i{height:8px;background:#e0edf3;border-radius:5px;flex:1}.grade-row b{height:14px;width:30px;background:#b8e4d5;border-radius:5px}.tag.teal{background:#e9f6f6;color:#187d82}.teal-cta{background:#177e86}.status-note{color:#a56c15;font-size:12px;margin:-12px 0 17px;font-weight:700}.placeholder-card{cursor:default;border-style:dashed;box-shadow:none}.placeholder-card:hover{transform:none;box-shadow:none;border-color:#d0dae8}.placeholder-card:focus-visible{outline:2px solid #90abc8}.pending-bg{background:linear-gradient(145deg,#edf2f7,#dce6f0)}.pending-mock{min-height:116px;display:flex;flex-direction:column;justify-content:center;gap:12px}.pending-mock .p-line{height:11px;border-radius:8px;background:#dce5f0}.pending-mock .p-line:nth-child(2){width:74%}.pending-mock .p-line:nth-child(3){width:88%}.pending-label{align-self:flex-start;font-size:11px;color:#67758a;background:#eef2f7;padding:6px 9px;border-radius:6px;font-weight:700}.pending-cta{background:#f0f4f9;color:#60728a;text-align:center;display:block;border-radius:10px;padding:14px 12px;font-weight:750;font-size:13px;margin-top:auto}.thumb.card-illustration{padding:0;background:#e8f2f7;height:184px;display:block}.thumb.card-illustration img{display:block;width:100%;height:100%;object-fit:cover}@media(max-width:570px){.thumb.card-illustration{height:175px}}.beta-badge{display:inline-block;vertical-align:middle;margin-left:6px;font-size:11px;font-weight:800;letter-spacing:.5px;color:#9a5b00;background:#fff3d6;border:1px solid #f1d9a0;padding:3px 8px;border-radius:20px}.copyright-note{margin-top:9px;font-size:11px;line-height:1.5;color:#8896a7}.copyright-note a{color:inherit;text-decoration:underline;padding:4px 0}.copyright-note a:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+/* 視覺與版面以 docs/design/DESIGN.md、docs/design/mockups/首頁.html 為準（方案 1B：兩扇門＋橫列工具卡）。 */
+:root{
+  --bg:#f2f0ea; --surface:#fbfaf6; --sunk:#e8e5db;
+  --ink:#14233b; --ink2:#41506a; --ink3:#566379;
+  --line:#d3cfc1; --line-soft:#e2dfd4;
+  --primary:#1b3763; --on-primary:#f7f4ec; --on-primary-2:#d3dbec;
+  --brass:#7a5a1e; --brass-line:#b08d45; --brass-soft:#efe5c9;
+  --chip-live-bg:#dde5f1; --chip-live-fg:#1b3763;
+  --shadow:rgba(20,35,59,.28);
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1524; --surface:#13203a; --sunk:#09101c;
+  --ink:#f0ebdf; --ink2:#c2c9d6; --ink3:#9ba7bb;
+  --line:#2b3a58; --line-soft:#1f2c47;
+  --primary:#e3c47f; --on-primary:#10192b; --on-primary-2:#2b3550;
+  --brass:#e3c47f; --brass-line:#b08d45; --brass-soft:#2b2819;
+  --chip-live-bg:#1c2e50; --chip-live-fg:#c9d8f2;
+  --shadow:rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1524; --surface:#13203a; --sunk:#09101c;
+  --ink:#f0ebdf; --ink2:#c2c9d6; --ink3:#9ba7bb;
+  --line:#2b3a58; --line-soft:#1f2c47;
+  --primary:#e3c47f; --on-primary:#10192b; --on-primary-2:#2b3550;
+  --brass:#e3c47f; --brass-line:#b08d45; --brass-soft:#2b2819;
+  --chip-live-bg:#1c2e50; --chip-live-fg:#c9d8f2;
+  --shadow:rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7}
+a{color:var(--primary)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--brass-line);outline-offset:2px}
+
+.wrap{width:100%;max-width:1160px;margin-inline:auto;padding-inline:20px}
+
+/* 頂端固定導覽 */
+.nav{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;min-height:64px;padding-block:10px}
+.brand{order:1;display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);min-height:44px}
+.mark{position:relative;width:34px;height:34px;border-radius:3px;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:19px}
+.mark::after{content:"";position:absolute;left:7px;right:7px;bottom:6px;height:2px;background:var(--brass-line)}
+.brand b{display:block;font-family:var(--serif);font-size:17px;line-height:1.15;letter-spacing:.02em}
+.brand small{display:block;font-size:11.5px;color:var(--ink3);letter-spacing:.18em}
+.links{order:2;display:none;margin-left:auto;gap:4px}
+.links a{display:flex;align-items:center;min-height:44px;padding:0 14px;font-size:14.5px;color:var(--ink2);text-decoration:none;border-bottom:2px solid transparent}
+.links a:hover{color:var(--ink)}
+.links a[aria-current]{color:var(--ink);font-weight:700;border-bottom-color:var(--brass-line)}
+.links em,.tabs em{font-style:normal;margin-left:6px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.search{order:3;display:none;position:relative;width:100%}
+.nav.open .search{display:block}
+.search svg{position:absolute;left:11px;top:50%;translate:0 -50%;color:var(--ink3);pointer-events:none}
+.search input{width:100%;height:44px;padding:0 12px 0 34px;border:1px solid var(--line);border-radius:3px;background:var(--bg);color:var(--ink);font:inherit;font-size:15px}
+.search input::placeholder{color:var(--ink3);opacity:1}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sbtn{order:2;margin-left:auto;width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);border-radius:3px;background:transparent;color:var(--ink);cursor:pointer}
+.nav.open .sbtn{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.tabs{order:4;display:flex;width:100%}
+.tabs a{flex:1;min-height:44px;display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);font-size:14.5px;text-decoration:none;color:var(--ink2)}
+.tabs a+a{border-left:0}
+.tabs a:first-child{border-radius:3px 0 0 3px}.tabs a:last-child{border-radius:0 3px 3px 0}
+.tabs a[aria-current]{background:var(--primary);border-color:var(--primary);color:var(--on-primary);font-weight:700}
+.tabs a[aria-current] em{color:inherit}
+@media (min-width:600px){
+  .wrap{padding-inline:36px}
+  .links{display:flex}
+  .search{display:block;width:auto}
+  .search input{width:230px;font-size:14px}
+  .sbtn,.tabs{display:none}
+}
+@media (min-width:1024px){.wrap{padding-inline:48px}}
+
+/* 標題區與兩扇門 */
+.hero{padding-block:40px 36px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.24em;font-weight:700;color:var(--brass)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:34px;line-height:1.25;letter-spacing:.01em;margin:12px 0 14px;max-width:12em;text-wrap:balance}
+.hero p{margin:0;color:var(--ink2);font-size:15.5px;max-width:30em}
+.doors{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);margin-top:28px}
+.door{display:grid;gap:6px;padding:22px 22px 18px;border-radius:4px;text-decoration:none;min-width:0}
+.door.a{background:var(--primary);color:var(--on-primary)}
+.door.b{background:var(--surface);color:var(--ink);border:1px solid var(--brass-line)}
+.door .k{font-size:12.5px;letter-spacing:.2em;font-weight:700}
+.door.a .k{color:var(--on-primary-2)}.door.b .k{color:var(--brass)}
+.door h2{font-family:var(--serif);font-size:26px;line-height:1.3;margin:0}
+.door p{margin:0;font-size:14.5px}
+.door.a p{color:var(--on-primary-2)}.door.b p{color:var(--ink2)}
+.door .n{display:flex;align-items:baseline;justify-content:space-between;min-height:44px;margin-top:10px;padding-top:10px;border-top:1px solid currentColor;font-size:14px;font-weight:700}
+.door .n b{font-family:var(--serif);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+@media (min-width:600px){.hero{padding-block:52px 44px}.hero h1{font-size:44px}.doors{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.hero{padding-block:72px 56px}.hero h1{font-size:56px}.doors{margin-top:44px}.door{padding:28px 30px 22px}.door h2{font-size:32px}}
+
+/* 區段 */
+.zone{padding-block:44px 36px;scroll-margin-top:132px}
+.zone.alt{background:var(--sunk);border-top:1px solid var(--line)}
+.zhead{display:grid;gap:10px;margin-bottom:26px}
+.kicker{display:flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.2em;font-weight:700;color:var(--brass)}
+.kicker::before{content:"";width:28px;height:1px;background:var(--brass-line)}
+.zhead h2{font-family:var(--serif);font-size:26px;line-height:1.3;margin:0;text-wrap:balance}
+.zhead p{margin:0;color:var(--ink2);max-width:40em;font-size:14.5px}
+.count{display:none;font-family:var(--serif);color:var(--ink3);font-size:15px;white-space:nowrap}
+.count b{font-size:44px;line-height:1;color:var(--brass);margin-right:4px;font-variant-numeric:tabular-nums}
+@media (min-width:600px){.zone{scroll-margin-top:68px}}
+@media (min-width:1024px){
+  .zone{padding-block:64px 52px}
+  .zhead{grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:6px 40px}
+  .zhead .txt{display:grid;gap:10px}
+  .count{display:block}
+  .zhead h2{font-size:32px}
+}
+
+/* 步驟條（GAS 區） */
+.steps{display:grid;grid-template-columns:minmax(0,1fr);margin:0 0 26px;padding:0;list-style:none;counter-reset:s;background:var(--surface);border:1px solid var(--line);border-radius:4px}
+.steps li{counter-increment:s;display:flex;gap:12px;align-items:baseline;padding:12px 16px;font-size:14px;border-bottom:1px solid var(--line-soft);min-width:0}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(s);font-family:var(--serif);font-weight:700;font-size:18px;color:var(--brass)}
+.steps-h{margin:0 0 8px;font-size:12.5px;letter-spacing:.14em;color:var(--ink3);font-weight:700}
+@media (min-width:600px){
+  .steps{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .steps li{border-bottom:0;border-right:1px solid var(--line-soft)}.steps li:last-child{border-right:0}
+}
+
+/* 工具卡（橫列） */
+.rows{display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:1024px){.rows.two{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.rows.two>:last-child:nth-child(odd){grid-column:1/-1}}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:4px;color:inherit;text-decoration:none;overflow:hidden;min-width:0;transition:transform .2s,border-color .2s,box-shadow .2s}
+a.card:hover,a.card:focus-visible{transform:translateY(-3px);border-color:var(--brass-line);box-shadow:0 16px 28px -20px var(--shadow)}
+.thumb{aspect-ratio:16/10;background:var(--sunk);border-bottom:1px solid var(--line);overflow:hidden}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.8)}
+.cb{display:flex;flex-direction:column;gap:10px;padding:18px 18px 14px;flex:1;min-width:0}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:6px 10px;flex-wrap:wrap}
+.tag{font-size:12.5px;letter-spacing:.08em;color:var(--ink3)}
+.st{font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:2px;white-space:nowrap}
+.st-live{background:var(--chip-live-bg);color:var(--chip-live-fg)}
+.st-beta,.st-wip{background:var(--brass-soft);color:var(--brass)}
+.st-cand{border:1px dashed var(--ink3);color:var(--ink3)}
+.card h3{font-family:var(--serif);font-size:21px;line-height:1.3;margin:0}
+.lead{margin:0;color:var(--ink2);font-size:14.5px;line-height:1.75}
+.feat{display:flex;flex-wrap:wrap;margin:0;padding:0;list-style:none;font-size:13px;color:var(--ink3);line-height:1.8}
+.feat li+li::before{content:"·";margin:0 7px}
+.foot{margin-top:auto;padding-top:10px;border-top:1px solid var(--line-soft);min-height:48px;display:flex;justify-content:space-between;align-items:center;gap:6px 12px;flex-wrap:wrap}
+.ver,.app-meta{font-size:12.5px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.app-meta strong{font-weight:400}
+.app-meta .date::before{content:"｜"}
+.go{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:var(--primary);margin-left:auto}
+.go svg{transition:translate .2s}
+a.card:hover .go svg{translate:3px 0}
+.card.wip{border-color:var(--brass-line)}
+.card.cand{border-style:dashed;background:transparent}
+.card.cand .thumb img{filter:grayscale(.7);opacity:.7}
+.card.cand .go{color:var(--ink3);font-weight:500}
+.row{display:grid;grid-template-columns:104px minmax(0,1fr);align-items:start}
+.row .thumb{aspect-ratio:1;margin:14px 0 0 14px;border:1px solid var(--line);border-radius:3px}
+.row .cb{padding:14px 16px 12px}
+.row h3{font-size:19px}
+.row .lead{font-size:14px;line-height:1.7}
+.row .feat{display:none}
+@media (min-width:600px){
+  .row{grid-template-columns:230px minmax(0,1fr)}
+  .row .thumb{aspect-ratio:4/3;margin:18px 0 18px 18px}
+  .row .cb{padding:18px 20px 14px;height:100%}
+  .row .feat{display:flex}
+  .row h3{font-size:22px}
+}
+
+.empty{margin:0;padding:48px 0;color:var(--ink2)}
+
+/* 頁尾（只有一個） */
+.foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:30px 34px;font-size:13px;color:var(--ink3);line-height:1.9}
+.foot-site .wrap{display:grid;gap:4px}
+.foot-site strong{font-family:var(--serif);font-size:16px;color:var(--ink)}
+.foot-site .top-link{display:inline-flex;align-items:center;min-height:44px;color:var(--primary);font-weight:700;text-decoration:none;font-size:14px}
+.foot-site .copyright-note a{display:inline-block;padding:12px 0}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.go svg{transition:none}a.card:hover,a.card:focus-visible{transform:none}.go svg{translate:none!important}}
 </style>
 </head>
-<body>
-<header><div class="brand"><div class="brand-icon" aria-hidden="true">✦</div><div>Teacher Hub<small>教師小幫手</small></div></div><span class="header-note">用科技，讓日常更簡單</span></header>
-<section class="hero"><span class="eyebrow">TEACHER'S TOOLKIT</span><h1>老師的日常小幫手</h1><p>一點巧思，少一點繁瑣。<br>為教學現場打造的實用小工具，點選卡片就能使用。</p></section>
-<main class="container">
-<div class="toolbar"><div><h2>探索小工具 <span>07</span></h2><p>選擇你需要的工具，立即開始使用。</p></div><input class="search" id="search" type="search" placeholder="搜尋工具名稱或功能…" aria-label="搜尋小工具"></div>
-<div class="grid" id="tools">
-<a class="card" href="https://derliang.github.io/seat-helper/" aria-label="開啟座位小幫手"><div class="thumb card-illustration"><img src="./images/cards/seat.svg" alt="seat 功能插畫" loading="lazy" width="640" height="480"></div><div class="body"><span class="tag">座位安排</span><h3>🪑 座位小幫手</h3><p>智慧安排全班座位，兼顧身高、鄰座偏好與歷史紀錄。支援抽籤、座位調整及多格式匯出。</p><div class="app-meta" data-tool="seat-helper"><strong>v3.2.3</strong><span class="date">發布：2026-10-17</span></div><span class="cta">點選立即使用 <span aria-hidden="true">↗</span></span></div></a>
-<a class="card" href="https://derliang.github.io/cleaning-helper/" aria-label="開啟掃地工作小幫手"><div class="thumb card-illustration"><img src="./images/cards/cleaning.svg" alt="cleaning 功能插畫" loading="lazy" width="640" height="480"></div><div class="body"><span class="tag green">班級打掃</span><h3>🧹 掃地工作小幫手</h3><p>快速分配打掃工作，自訂項目與需求人數，搭配趣味抽籤、避免重複分配及排班表匯出。</p><div class="app-meta" data-tool="cleaning-helper"><strong>v2.11</strong><span class="date">發布：2026-10-21</span></div><span class="cta green-cta">點選立即使用 <span aria-hidden="true">↗</span></span></div></a>
-<a class="card" href="https://derliang.github.io/exam-helper-clock/" aria-label="開啟段考小幫手"><div class="thumb card-illustration"><img src="./images/cards/exam.svg" alt="exam 功能插畫" loading="lazy" width="640" height="480"></div><div class="body"><span class="tag purple">考試輔助</span><h3>⏱️ 段考小幫手</h3><p>提供考場大型時鐘、考程與倒數顯示、考前提醒、語音播報，以及出缺席統計。</p><div class="app-meta" data-tool="exam-helper-clock"><strong>v2.28.4</strong><span class="date">發布：2026-10-17</span></div><span class="cta purple-cta">點選立即使用 <span aria-hidden="true">↗</span></span></div></a>
-<a class="card" href="./grade-deploy/" aria-label="開啟平時成績小幫手自助部署操作原型（施工中）"><div class="thumb card-illustration"><img src="./images/cards/grade.svg" alt="grade 功能插畫" loading="lazy" width="640" height="480"></div><div class="body"><span class="tag teal">GAS 自助部署 · 開發試點</span><h3>📊 平時成績小幫手</h3><p>教師專屬的平時成績管理系統。未來可透過學校 Google Workspace 帳號，自行安裝及更新獨立的 GAS 程式。</p><div class="status-note">🚧 自助部署功能施工中</div><span class="cta teal-cta">進入部署操作原型 <span aria-hidden="true">→</span></span></div></a><article class="card placeholder-card" aria-label="晨練成績系統，正式版尚未推出，敬請期待"><div class="thumb card-illustration"><img src="./images/cards/morning.svg" alt="morning 功能插畫" loading="lazy" width="640" height="480"></div><div class="body"><span class="pending-label">GAS 自助部署候選</span><h3>📈 晨練成績系統</h3><p>晨間練習成績紀錄、統計與查詢，協助老師了解學生練習情況。</p><span class="pending-cta">🚧 正式版尚未推出，敬請期待</span></div></article>
+<body id="top">
+<nav class="nav" id="nav" aria-label="主要導覽"><div class="wrap">
+<a class="brand" href="#top"><span class="mark" aria-hidden="true">T</span><span><b>Teacher Hub</b><small>教師小幫手</small></span></a>
+<div class="links"><a href="#usable" aria-current="true">立即可用<em>4</em></a><a href="#gas">GAS 部署<em>3</em></a></div>
+<label class="search"><span class="vh">搜尋小工具</span><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 12l4 4" stroke="currentColor" stroke-width="1.6"/></svg><input id="search" type="search" placeholder="搜尋工具名稱或功能…" autocomplete="off"></label>
+<button class="sbtn" id="sbtn" type="button" aria-label="搜尋小工具" aria-expanded="false" aria-controls="search"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 12l4 4" stroke="currentColor" stroke-width="1.6"/></svg></button>
+<div class="tabs"><a href="#usable" aria-current="true">立即可用 <em>4</em></a><a href="#gas">GAS 部署 <em>3</em></a></div>
+</div></nav>
 
-<article class="card placeholder-card" aria-label="午餐小幫手，正式版尚未推出，敬請期待"><div class="thumb card-illustration"><img src="./images/cards/lunch.svg" alt="lunch 功能插畫" loading="lazy" width="640" height="480"></div><div class="body"><span class="pending-label">GAS 自助部署候選</span><h3>🍱 午餐小幫手</h3><p>整合午餐訂購、菜單管理、金額統計與付款紀錄，讓同學用手機自己點餐。多人同時使用，需要 GAS 後端。</p><span class="pending-cta">🚧 正式版尚未推出，敬請期待</span></div></article>
-<a class="card" href="https://derliang.github.io/teacher-notes-web/" aria-label="開啟老師隨手記（Beta 版）"><div class="thumb card-illustration"><img src="./images/cards/notes.svg" alt="notes 功能插畫" loading="lazy" width="640" height="480"></div><div class="body"><span class="tag teal">日常記錄 · Beta 版</span><h3>📝 老師隨手記 <span class="beta-badge">Beta</span></h3><p>給老師的隨手記錄工具：點名、收作業、成績、學生請假、待辦、行事曆與家長訊息，資料存在自己的 Google 雲端硬碟。</p><div class="app-meta" data-tool="teacher-notes-web"><strong>v1.4.5</strong><span class="date">發布：2026-10-25</span></div><span class="cta teal-cta">點選立即使用 <span aria-hidden="true">↗</span></span></div></a></div><p class="empty" id="empty">沒有符合的工具，請換個關鍵字試試。</p>
+<header class="hero"><div class="wrap">
+<span class="eyebrow">TEACHER'S TOOLKIT</span>
+<h1>老師的日常小幫手</h1>
+<p>一點巧思，少一點繁瑣。<br>為教學現場打造的實用小工具，點選卡片就能使用。</p>
+<div class="doors">
+<a class="door a" href="#usable"><span class="k">線上直接執行</span><h2>立即可用</h2><p>點開卡片就在瀏覽器使用，無須安裝。</p><span class="n"><span>前往這一區 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>4</b> 款</span></span></a>
+<a class="door b" href="#gas"><span class="k">需部署到 GAS・施工中</span><h2>GAS 自助部署</h2><p>多人同時使用的工具，要安裝到自己的 Google 帳號。</p><span class="n"><span>前往這一區 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>3</b> 款</span></span></a>
+</div>
+</div></header>
+
+<main>
+<section class="zone" id="usable" aria-labelledby="usable-h"><div class="wrap">
+<div class="zhead"><div class="txt"><span class="kicker">線上直接執行</span><h2 id="usable-h">立即可用</h2><p>點開卡片就在瀏覽器使用，無須安裝。每款工具獨立更新，版本與發布日標在卡片底部。</p></div><span class="count"><b>4</b>款</span></div>
+<div class="rows two">
+<a class="card row live" href="https://derliang.github.io/seat-helper/" aria-label="開啟座位小幫手"><div class="thumb"><img src="./images/cards/seat.svg" alt="座位小幫手插畫" loading="lazy" width="640" height="480"></div><div class="cb"><div class="meta"><span class="tag">座位安排</span><span class="st st-live">即開即用</span></div><h3>座位小幫手</h3><p class="lead">智慧安排全班座位，兼顧身高、鄰座偏好與歷史紀錄。</p><ul class="feat"><li>抽籤</li><li>座位調整</li><li>多格式匯出</li></ul><div class="foot"><div class="app-meta" data-tool="seat-helper"><strong>v3.2.3</strong><span class="date">發布：2026-10-17</span></div><span class="go">開啟使用 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></div></div></a>
+<a class="card row live" href="https://derliang.github.io/cleaning-helper/" aria-label="開啟掃地工作小幫手"><div class="thumb"><img src="./images/cards/cleaning.svg" alt="掃地工作小幫手插畫" loading="lazy" width="640" height="480"></div><div class="cb"><div class="meta"><span class="tag">班級打掃</span><span class="st st-live">即開即用</span></div><h3>掃地工作小幫手</h3><p class="lead">快速分配打掃工作，自訂項目與需求人數。</p><ul class="feat"><li>趣味抽籤</li><li>避免重複分配</li><li>排班表匯出</li></ul><div class="foot"><div class="app-meta" data-tool="cleaning-helper"><strong>v2.11</strong><span class="date">發布：2026-10-21</span></div><span class="go">開啟使用 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></div></div></a>
+<a class="card row live" href="https://derliang.github.io/exam-helper-clock/" aria-label="開啟段考小幫手"><div class="thumb"><img src="./images/cards/exam.svg" alt="段考小幫手插畫" loading="lazy" width="640" height="480"></div><div class="cb"><div class="meta"><span class="tag">考試輔助</span><span class="st st-live">即開即用</span></div><h3>段考小幫手</h3><p class="lead">提供考場大型時鐘、考程與倒數顯示。</p><ul class="feat"><li>考前提醒</li><li>語音播報</li><li>出缺席統計</li></ul><div class="foot"><div class="app-meta" data-tool="exam-helper-clock"><strong>v2.28.4</strong><span class="date">發布：2026-10-17</span></div><span class="go">開啟使用 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></div></div></a>
+<a class="card row beta" href="https://derliang.github.io/teacher-notes-web/" aria-label="開啟老師隨手記（Beta 版）"><div class="thumb"><img src="./images/cards/notes.svg" alt="老師隨手記插畫" loading="lazy" width="640" height="480"></div><div class="cb"><div class="meta"><span class="tag">日常記錄</span><span class="st st-beta">Beta</span></div><h3>老師隨手記</h3><p class="lead">給老師的隨手記錄工具，資料存在自己的 Google 雲端硬碟。</p><ul class="feat"><li>點名</li><li>收作業</li><li>成績</li><li>學生請假</li><li>待辦</li><li>行事曆</li><li>家長訊息</li></ul><div class="foot"><div class="app-meta" data-tool="teacher-notes-web"><strong>v1.4.5</strong><span class="date">發布：2026-10-25</span></div><span class="go">開啟使用 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></div></div></a>
+</div>
+</div></section>
+
+<section class="zone alt" id="gas" aria-labelledby="gas-h"><div class="wrap">
+<div class="zhead"><div class="txt"><span class="kicker">需部署到 GAS</span><h2 id="gas-h">GAS 自助部署</h2><p>適合多人同時使用的工具，例如讓同學各自用手機操作。程式安裝在老師自己的 Google 帳號下，成為獨立的 Apps Script。自助部署平台施工中，尚未開放安裝。</p></div><span class="count"><b>3</b>款</span></div>
+<p class="steps-h">自助部署怎麼用（施工中，尚未開放）</p>
+<ol class="steps"><li>用學校 Google 帳號登入</li><li>選「首次安裝」或「更新」</li><li>勾選確認，系統自動完成</li><li>首次安裝後，到編輯器授權一次</li></ol>
+<div class="rows">
+<a class="card row wip" href="./grade-deploy/" aria-label="進入平時成績小幫手自助部署操作原型（施工中）"><div class="thumb"><img src="./images/cards/grade.svg" alt="平時成績小幫手插畫" loading="lazy" width="640" height="480"></div><div class="cb"><div class="meta"><span class="tag">開發試點</span><span class="st st-wip">施工中・可預覽</span></div><h3>平時成績小幫手</h3><p class="lead">教師專屬的平時成績管理系統，用學校 Google Workspace 帳號自行安裝與更新。</p><ul class="feat"><li>獨立 GAS 程式</li><li>自行安裝</li><li>自行更新</li></ul><div class="foot"><span class="ver">尚未發布</span><span class="go">進入操作原型 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></div></div></a>
+<article class="card row cand" aria-label="晨練成績系統，正式版尚未推出，敬請期待"><div class="thumb"><img src="./images/cards/morning.svg" alt="晨練成績系統插畫" loading="lazy" width="640" height="480"></div><div class="cb"><div class="meta"><span class="tag">晨練紀錄</span><span class="st st-cand">候選</span></div><h3>晨練成績系統</h3><p class="lead">晨間練習成績紀錄、統計與查詢，協助老師了解學生練習情況。</p><ul class="feat"><li>成績紀錄</li><li>統計</li><li>查詢</li></ul><div class="foot"><span class="ver">尚未推出</span><span class="go">敬請期待</span></div></div></article>
+<article class="card row cand" aria-label="午餐小幫手，正式版尚未推出，敬請期待"><div class="thumb"><img src="./images/cards/lunch.svg" alt="午餐小幫手插畫" loading="lazy" width="640" height="480"></div><div class="cb"><div class="meta"><span class="tag">午餐訂購</span><span class="st st-cand">候選</span></div><h3>午餐小幫手</h3><p class="lead">整合午餐訂購、菜單管理、金額統計與付款紀錄，讓同學用手機自己點餐。</p><ul class="feat"><li>訂購</li><li>菜單管理</li><li>金額統計</li><li>付款紀錄</li></ul><div class="foot"><span class="ver">尚未推出</span><span class="go">敬請期待</span></div></div></article>
+</div>
+</div></section>
+
+<div class="wrap"><p class="empty" id="empty" role="status" hidden>沒有符合的工具，請換個關鍵字試試。</p></div>
 </main>
-<footer>Teacher Hub · Made for Teachers<br>每一個小工具，都是為了讓老師的日常更輕鬆。<div class="version-meta" id="site-version" aria-live="polite"><strong>首頁版本 v1.11.0</strong>｜更新日期 2026-10-24</div><div class="copyright-note"><small>© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></small></div></footer>
+
+<footer class="foot-site"><div class="wrap"><strong>Teacher Hub · Made for Teachers</strong><span>每一個小工具，都是為了讓老師的日常更輕鬆。</span><span class="version-meta" id="site-version" aria-live="polite">首頁版本 v1.12.0｜更新日期 2026-10-25</span><span class="copyright-note"><small>© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></small></span><a class="top-link" href="#top">回到頂端 ↑</a></div></footer>
+
 <script>
 fetch('./site.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('metadata');return r.json()}).then(m=>{if(/^\d+\.\d+\.\d+$/.test(m.version)&&/^\d{4}-\d{2}-\d{2}$/.test(m.updated)){document.getElementById('site-version').textContent='首頁版本 v'+m.version+'｜更新日期 '+m.updated}}).catch(()=>{});
 
 // 個別工具版本以 tools.json 為單一來源；讀取失敗時保留 HTML 的備援內容。
-fetch('./tools.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('metadata');return r.json()}).then(data=>{for(const item of data.tools||[]){if(!/^[a-z0-9-]+$/.test(item.id)||!/^\d+(?:\\.\d+)*$/.test(item.version)||!/^\d{4}-\d{2}-\d{2}$/.test(item.releaseDate))continue;const el=document.querySelector('[data-tool="'+item.id+'"]');if(!el)continue;el.querySelector('strong').textContent='v'+item.version;el.querySelector('.date').textContent='發布：'+item.releaseDate}}).catch(()=>{});
-const search=document.getElementById('search'),cards=[...document.querySelectorAll('.card')],empty=document.getElementById('empty');
-search.addEventListener('input',()=>{const q=search.value.trim().toLocaleLowerCase();let shown=0;for(const card of cards){const ok=card.textContent.toLocaleLowerCase().includes(q);card.hidden=!ok;if(ok)shown++;}empty.style.display=shown?'none':'block';});
+fetch('./tools.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('metadata');return r.json()}).then(data=>{for(const item of data.tools||[]){if(!/^[a-z0-9-]+$/.test(item.id)||!/^\d+(?:\.\d+)*$/.test(item.version)||!/^\d{4}-\d{2}-\d{2}$/.test(item.releaseDate))continue;const el=document.querySelector('[data-tool="'+item.id+'"]');if(!el)continue;el.querySelector('strong').textContent='v'+item.version;el.querySelector('.date').textContent='發布：'+item.releaseDate}}).catch(()=>{});
+
+// 搜尋涵蓋「立即可用」與「GAS 部署」兩區；整區都沒有符合時，連區段一起收起。
+const nav=document.getElementById('nav'),search=document.getElementById('search'),sbtn=document.getElementById('sbtn'),empty=document.getElementById('empty');
+const zones=[...document.querySelectorAll('.zone')],cards=[...document.querySelectorAll('.card')];
+function filter(){const q=search.value.trim().toLocaleLowerCase();let shown=0;for(const card of cards){const ok=card.textContent.toLocaleLowerCase().includes(q);card.hidden=!ok;if(ok)shown++;}for(const z of zones)z.hidden=!z.querySelector('.card:not([hidden])');empty.hidden=shown>0;spy();}
+search.addEventListener('input',filter);
+search.addEventListener('keydown',e=>{if(e.key==='Escape'){search.value='';filter();if(matchMedia('(max-width:599px)').matches){nav.classList.remove('open');sbtn.setAttribute('aria-expanded','false');sbtn.focus();}}});
+sbtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');sbtn.setAttribute('aria-expanded',open);if(open)search.focus();});
+
+// 導覽列標出目前所在區段。
+const marks=[...document.querySelectorAll('.links a, .tabs a')];
+function spy(){const visible=zones.filter(z=>!z.hidden);let cur=visible[0];const y=nav.offsetHeight+80;for(const z of visible)if(z.getBoundingClientRect().top<=y)cur=z;if(visible.length&&innerHeight+scrollY>=document.documentElement.scrollHeight-2)cur=visible[visible.length-1];for(const a of marks){if(cur&&a.getAttribute('href')==='#'+cur.id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');}}
+let tick=0;addEventListener('scroll',()=>{if(!tick)tick=requestAnimationFrame(()=>{tick=0;spy()})},{passive:true});addEventListener('resize',spy);spy();
 </script>
-</body></html>
+</body>
+</html>
