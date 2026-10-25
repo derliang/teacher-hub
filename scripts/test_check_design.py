@@ -65,6 +65,39 @@ class Style(unittest.TestCase):
         self.assertTrue(has(run(cd.check_style, "t", html), "深色"))
 
 
+class LinkedCss(unittest.TestCase):
+    """自助部署頁的樣式放在 assets/app.css，檢查必須讀得到並套用同樣的規則。"""
+
+    def _page(self, css):
+        import tempfile
+        d = Path(tempfile.mkdtemp())
+        (d / "assets").mkdir()
+        (d / "assets/app.css").write_text(css, encoding="utf-8")
+        html = '<html><head><link rel="stylesheet" href="assets/app.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=x"></head></html>'
+        return html, d
+
+    def _tokens(self):
+        return (ROOT / "docs/design/tokens.css").read_text(encoding="utf-8")
+
+    def test_linked_css_is_checked(self):
+        html, d = self._page(self._tokens() + ".x{color:#ff0000}")
+        errs = run(cd.check_style, "t", html, d)
+        self.assertTrue(has(errs, "寫死色碼"))
+
+    def test_linked_css_token_drift(self):
+        html, d = self._page(self._tokens().replace("--primary:#1b3763", "--primary:#2255aa", 1))
+        self.assertTrue(has(run(cd.check_style, "t", html, d), "與 tokens.css 不同"))
+
+    def test_linked_css_clean_passes(self):
+        html, d = self._page(self._tokens() + ".x{color:var(--ink);border-radius:4px;font-family:var(--sans)}")
+        self.assertEqual(run(cd.check_style, "t", html, d), [])
+
+    def test_missing_linked_css(self):
+        html, d = self._page("")
+        (d / "assets/app.css").unlink()
+        self.assertTrue(has(run(cd.check_style, "t", html, d), "不存在"))
+
+
 class Content(unittest.TestCase):
     def test_emoji(self):
         self.assertTrue(has(run(cd.check_text, "t", "<p>歡迎 🎉</p>"), "emoji"))

@@ -80,6 +80,7 @@ PR 說明要寫「看過什麼」。至少：
 
 `/deploy/` 與 `/deploy/admin/` 的原始碼在私人 repo `derliang/gas-deploy-helper`（`selfservice/web/`），由 `selfservice/publish.mjs` 輸出到本站。
 
+- 這些頁面的樣式可以放在外部樣式表（例如 `<link rel="stylesheet" href="assets/app.css">`），`check_design.py` 會讀取頁面引用的本地樣式表並套用同樣的規則；Google Fonts 等外部網址不在檢查範圍。
 - 這些頁面進入本站時，**以本 repo 的 DESIGN.md 與 tokens.css 為準**；私人 repo 的樣式（目前的 `assets/app.css`）要改成使用同一套 token，不得保留自己的一套色彩。
 - 發布前先在本 repo 的分支放入輸出檔，跑 `check_design.py`，通過才可合併。檢查失敗時修私人 repo 的原始碼再重新輸出，不要直接改輸出檔（會與原始碼脫節）。
 - 功能與文字規則由私人 repo 決定；外觀由本 repo 決定。
