@@ -1,0 +1,41 @@
+/*
+Copyright (c) 2026 derliang. All rights reserved.
+Non-commercial use only. See LICENSE.md.
+Authorization inquiries: derliang@gmail.com
+
+Teacher Hub 設計 tokens 的唯一來源（docs/design/DESIGN.md 第 2 節）。
+每個頁面的 :root 與兩個深色區塊所宣告的 token，值必須與本檔相同；
+scripts/check_design.py 會逐頁核對。要改 token：先改本檔與 DESIGN.md，再同步各頁。
+*/
+
+/* Layout concept: 學院編輯風。象牙底、海軍藍主色、黃銅金只用在標示與細線。首頁分「立即可用」「GAS 部署」兩區，頂端固定導覽標出所在區段，子頁用麵包屑。 */
+:root{
+  --bg:#f2f0ea; --surface:#fbfaf6; --sunk:#e8e5db;
+  --ink:#14233b; --ink2:#41506a; --ink3:#566379;
+  --line:#d3cfc1; --line-soft:#e2dfd4;
+  --primary:#1b3763; --on-primary:#f7f4ec; --on-primary-2:#d3dbec;
+  --brass:#7a5a1e; --brass-line:#b08d45; --brass-soft:#efe5c9;
+  --chip-live-bg:#dde5f1; --chip-live-fg:#1b3763;
+  --shadow:rgba(20,35,59,.28);
+  --ok:#1d6b4a; --ok-soft:#dcefe4; --bad:#9d2b2b; --bad-soft:#f5dfdc;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1524; --surface:#13203a; --sunk:#09101c;
+  --ink:#f0ebdf; --ink2:#c2c9d6; --ink3:#9ba7bb;
+  --line:#2b3a58; --line-soft:#1f2c47;
+  --primary:#e3c47f; --on-primary:#10192b; --on-primary-2:#2b3550;
+  --brass:#e3c47f; --brass-line:#b08d45; --brass-soft:#2b2819;
+  --chip-live-bg:#1c2e50; --chip-live-fg:#c9d8f2;
+  --ok:#7fd1a6; --ok-soft:#133125; --bad:#f2a7a0; --bad-soft:#381a1b;
+  --shadow:rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1524; --surface:#13203a; --sunk:#09101c;
+  --ink:#f0ebdf; --ink2:#c2c9d6; --ink3:#9ba7bb;
+  --line:#2b3a58; --line-soft:#1f2c47;
+  --primary:#e3c47f; --on-primary:#10192b; --on-primary-2:#2b3550;
+  --brass:#e3c47f; --brass-line:#b08d45; --brass-soft:#2b2819;
+  --chip-live-bg:#1c2e50; --chip-live-fg:#c9d8f2;
+  --ok:#7fd1a6; --ok-soft:#133125; --bad:#f2a7a0; --bad-soft:#381a1b;
+  --shadow:rgba(0,0,0,.6); color-scheme:dark}

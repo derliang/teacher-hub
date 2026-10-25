@@ -9,6 +9,15 @@
 - 新頁面或大改版使用 `設計` 技能（輸入 `/設計`）：先在對話中出設計稿給使用者確認，定案後把規範與模擬頁更新回 `docs/design/`，和程式放在同一個 PR。
 - 要偏離規範，先更新 DESIGN.md 並取得使用者確認，不要只改程式。
 
+## 防走樣：每一層每一頁都要守規範
+
+- 頁面清冊在 [docs/design/PAGES.md](docs/design/PAGES.md) 與 `docs/design/pages.json`；唯一的 token 來源是 `docs/design/tokens.css`。
+- **改到任何 `.html` 或樣式，提 PR 前先跑 `python scripts/check_design.py`，全部通過才行**；再依 PAGES.md 第 5 節做人工檢查，結果寫進 PR 說明。
+- repo 內每個 `.html` 都要登記並有對應模擬頁；新增頁面照 PAGES.md 第 6 節的流程（先登記、先設計、再實作）。
+- 不為了讓檢查通過而改檢查或 `tokens.css`；不新增例外頁。`grade-deploy/`、`admin/` 是會到期的舊風格過渡頁。
+- 未完成的 GAS 工具只有「候選」（不可點）與「施工中・可預覽」（連到 `gas/<id>/` 預覽頁，不得有按鈕或登入）兩種呈現，見 DESIGN.md 5.1。
+- 修改檢查程式後，跑 `python scripts/test_check_design.py` 確認它仍抓得到走樣。
+
 ## 工具上架與下架
 
 - 上架、改狀態、下架的唯一流程在 [docs/PUBLISHING.md](docs/PUBLISHING.md)。先分區（「立即可用」或「GAS 部署」），再照該區的檢查清單做。
