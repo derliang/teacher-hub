@@ -4,6 +4,8 @@
 
 - 線上首頁：https://derliang.github.io/teacher-hub/
 - **交接／新增工具前必讀：[MAINTENANCE.md](MAINTENANCE.md)**
+- **改頁面前必讀：[設計規範](docs/design/DESIGN.md)**（模擬頁在 `docs/design/mockups/`）
+- **上架、下架工具：[docs/PUBLISHING.md](docs/PUBLISHING.md)**
 - 入口版本：[site.json](site.json)
 - 歷史：[CHANGELOG.md](CHANGELOG.md)
 
