@@ -1,0 +1,61 @@
+<!doctype html>
+<!--
+Copyright (c) 2026 derliang. All rights reserved.
+Non-commercial use only. See LICENSE.md.
+Authorization inquiries: derliang@gmail.com
+
+GAS 自助部署｜管理頁（/deploy/admin/）。這是前端介面；所有資料與操作都由私人後端逐次驗證管理員身分。
+外觀與互動規則見 docs/design/DESIGN.md 與 docs/deploy/；樣式在 ../assets/app.css（token 與 docs/design/tokens.css 一致）。
+-->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2f0ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1524" media="(prefers-color-scheme: dark)">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>部署平台管理｜Teacher Hub</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body id="top">
+<nav class="nav" aria-label="主要導覽"><div class="wrap">
+  <a class="brand" href="../../"><span class="mark" aria-hidden="true">T</span><span><b>Teacher Hub</b><small>教師小幫手</small></span></a>
+  <div class="links"><a href="../../#usable">立即可用</a><a href="../../#gas" aria-current="true">GAS 部署</a></div>
+  <div class="acct hidden" id="who"><span class="em" id="whoEmail"></span><button class="lo" id="signOutBtn" type="button">登出</button></div>
+  <div class="tabs"><a href="../../#usable">立即可用</a><a href="../../#gas" aria-current="true">GAS 部署</a></div>
+</div></nav>
+
+<main class="wrap">
+  <nav class="crumbs" aria-label="所在位置"><a href="../../">Teacher Hub 首頁</a><span aria-hidden="true">›</span><a href="../../#gas">GAS 部署</a><span aria-hidden="true">›</span><b aria-current="page">部署平台管理</b></nav>
+  <div class="pagehead">
+    <span class="kicker">GAS 自助部署｜管理員</span>
+    <h1>部署平台管理</h1>
+    <p>這個頁面是公開檔案，但所有資料與操作都由後端逐次驗證管理員身分；非管理員登入只會看到拒絕訊息。</p>
+  </div>
+
+  <div class="stack">
+    <div id="status"></div>
+    <section class="panel hidden" id="signInPanel"><h2>管理員登入</h2><div id="signInBtn"></div></section>
+
+    <div class="atabs hidden" id="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="teachers" aria-selected="true">教師授權</button>
+      <button type="button" role="tab" data-tab="releases" aria-selected="false">正式版</button>
+      <button type="button" role="tab" data-tab="deployments" aria-selected="false">部署紀錄</button>
+      <button type="button" role="tab" data-tab="audit" aria-selected="false">稽核紀錄</button>
+    </div>
+    <section class="vstack" id="tabBody"></section>
+  </div>
+</main>
+
+<footer class="foot-site"><div class="wrap">
+  <strong>Teacher Hub · Made for Teachers</strong>
+  <span>只有後端名單中的管理員可以讀寫；教師名冊與授權不會出現在這個頁面的原始碼裡。</span>
+  <span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></span>
+  <a class="top-link" href="#top">回到頂端 ↑</a>
+</div></footer>
+
+<script type="module" src="../assets/admin.js"></script>
+</body>
+</html>

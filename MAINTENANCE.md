@@ -77,8 +77,8 @@
 - 使用者已明確核准第四張「平時成績小幫手」，連結本站 `/grade-deploy/`，僅為標示「🚧 施工中」的自助部署原型，不代表程式已可安裝／更新。
 - 桌面首頁每行**最多三張卡片**；平板最多二張，手機一張。保留前三張既有功能與連結。
 - 第四張是前述「只收錄正式公開小工具」規則的**具體例外**，不得因此擴大其他未核准項目；前三張工具的版本追蹤白名單維持不變。
-- 自助部署前端原始碼、規格、測試與後端在私人 `derliang/gas-deploy-helper`；這裡只放公開靜態前台。
-- 使用者說 **push git** 預設是提交私人 `gas-deploy-helper`；說 **發佈網頁** 才是更新公開 `teacher-hub`。接手前請讀私人 repo 的 `AGENTS.md`。
+- 自助部署的**前端介面**（`/deploy/`、`/deploy/admin/`）的原始碼、設計規則與前端測試在本 repo（公開）；**後端**（授權閘門、教師白名單、正式版發布包、本機管理台）與其規格、測試在私人 `derliang/gas-deploy-helper`。介面執行時呼叫後端，分工見 [docs/deploy/README.md](docs/deploy/README.md)（2026-10-25 擁有者裁示）。
+- 使用者說 **push git** 預設是提交私人 `gas-deploy-helper`；說 **發佈網頁** 才是更新公開 `teacher-hub`。改後端或安裝／更新的功能規則前，請讀私人 repo 的 `AGENTS.md`；改前端介面請讀本 repo 的 `CLAUDE.md` 與 `docs/deploy/`。
 - 本施工頁沒有可確認的平時成績小幫手正式版本與發布日，不可虛構。
 
 ## 11. GAS 候選佔位卡片（2026-10-15）
@@ -87,7 +87,7 @@
 - 原四張卡片維持原功能：前三張直接使用；第四張平時成績小幫手進入已核准的施工中展示頁。
 - 桌面每行最多三張卡片，平板二張、手機一張。候選卡片不列入 `tools.json` 的已發布程式版本自動追蹤清單，不捏造版號及發布日期。
 - 另有 `grade-system`（GitHub Pages + Supabase）、`class-swap`（本機前端）、`seat-helper-gas-test`（GAS 測試副本）、`gas-deploy-helper`（部署平台本身），不要當成候選正式 GAS 教師工具。
-- **管理後台架構**：現有 Windows 本機管理台位於 `gas-deploy-helper` 並僅本機 `127.0.0.1:4173`；未來雲端管理後台的開發原始碼在 Private `gas-deploy-helper`，實際操作前台可發布於 Teacher Hub 中經後端 OAuth/RBAC 保護的管理頁（例如 `/grade-deploy/admin/`，正式路徑待定）；管理 API/白名單/憑證必須留在受保護的 HTTPS 後端，**雲端後台尚未實作**。
+- **管理後台架構**：現有 Windows 本機管理台位於 `gas-deploy-helper` 並僅本機 `127.0.0.1:4173`；管理後台的**後端**（授權閘門，GAS Web App）在 Private `gas-deploy-helper`；**前端介面**是本 repo 的 `/deploy/admin/`（2026-10-25 起）；管理 API/白名單/憑證必須留在受保護的 HTTPS 後端，**真實 Google 驗收尚未完成**，所以 `deploy/config.json` 的閘門網址仍是空的。
 
 ## 12. 使用者最終挑選的 GAS 佔位名單（2026-10-15，優先於先前第四張連結／候選說明）
 - 正式三工具保留原本可點擊的卡片與原連結。
@@ -136,7 +136,7 @@
 - **設計規範**：[docs/design/DESIGN.md](docs/design/DESIGN.md) 是視覺、版面、導覽與文案語氣的唯一來源，定案模擬頁在 `docs/design/mockups/`。2026-10-25 擁有者同意整體改版（學院編輯風；首頁分「立即可用」「GAS 部署」兩區；自助部署採精靈式），第 3 節「不經同意不得更換設計風格」由此放寬為「以 DESIGN.md 為準」。要偏離，先更新 DESIGN.md 並取得擁有者確認。
 - **上架與下架**：[docs/PUBLISHING.md](docs/PUBLISHING.md) 是上架、改狀態、下架的唯一流程，與第 5、6 節重疊處以它為準。核心規則：先分區、先問「一個人還是一群人」、沒有擁有者明確同意不得上架或下架、下架不刪公開 repo。
 - **兩區對應第 13 節的兩類工具**：「立即可用」＝直接線上執行型；「GAS 部署」＝自助部署型。GAS 區在平台通過真實 Google 驗收前只能是「候選」或「施工中・可預覽」。
-- **自助部署路徑**：`gas-deploy-helper` 的 `selfservice/publish.mjs` 預定發佈到本站 `/deploy/` 與 `/deploy/admin/`，之後取代第 10、14 節的 `/grade-deploy/` 與 `/admin/` 原型。在「發佈網頁」之前，原型維持原狀。
-- **實作狀態**：本節只記錄規範。首頁與兩個原型頁的實際改版是後續獨立工作，改版時依 DESIGN.md 並對照 `docs/design/mockups/`。
-- **防走樣機制（2026-10-25 補）**：頁面清冊 `docs/design/pages.json` 與 [PAGES.md](docs/design/PAGES.md)（層級、每層必備導覽、新增頁面流程、人工檢查）；唯一 token 來源 `docs/design/tokens.css`；自動檢查 `python scripts/check_design.py`（測試 `python scripts/test_check_design.py`）。**發布前檢查清單（第 6 節）新增兩條：`check_design.py` 全部通過；PAGES.md 第 5 節的人工檢查已做並寫進 PR 說明。**
-- **未完成的 GAS 工具**：只有「候選」（不可點）與「施工中・可預覽」（連到 `gas/<id>/` 預覽頁，不得有按鈕或登入）兩種呈現，見 DESIGN.md 5.1。`grade-deploy/`、`admin/` 列為會到期的舊風格過渡頁，`deploy/` 發布取代它們時一併刪除。
+- **自助部署路徑**：前端介面在本站 `/deploy/` 與 `/deploy/admin/`（v1.13.0 起），取代第 10、14 節的 `/grade-deploy/` 與 `/admin/` 原型：`/grade-deploy/` 已縮成自動轉址頁；`/admin/` 舊原型暫時保留，等 `/deploy/admin/` 通過真實驗收後刪除。
+- **實作狀態**：首頁已於 v1.12.0 改版；自助部署前端 `deploy/` 於 v1.13.0 加入（閘門網址未設定前只顯示「平台尚未開放」）；精靈（分步安裝與更新）尚未實作，規則見 `docs/deploy/WIZARD_SPEC.md`。
+- **防走樣機制（2026-10-25 補）**：頁面清冊 `docs/design/pages.json` 與 [PAGES.md](docs/design/PAGES.md)（層級、每層必備導覽、新增頁面流程、人工檢查）；唯一 token 來源 `docs/design/tokens.css`；自動檢查 `python scripts/check_design.py`（測試 `python scripts/test_check_design.py`）；自助部署前端另跑 `node --test scripts/test_deploy_frontend.mjs scripts/test_wizard_contract.mjs`。**發布前檢查清單（第 6 節）新增兩條：`check_design.py` 全部通過；PAGES.md 第 5 節的人工檢查已做並寫進 PR 說明。**
+- **未完成的 GAS 工具**：只有「候選」（不可點）與「施工中・可預覽」（連到 `gas/<id>/` 預覽頁，不得有按鈕或登入）兩種呈現，見 DESIGN.md 5.1。`grade-deploy/`（現為轉址頁）、`admin/` 列為會到期的舊風格過渡頁，到期條件見 PAGES.md 第 3 節。

@@ -144,7 +144,7 @@ class Home(unittest.TestCase):
         self.assertTrue(has(run(cd.check_home, "t", html), "狀態標籤"))
 
     def test_wip_card_linking_elsewhere(self):
-        html = HOME.replace('href="./grade-deploy/"', 'href="https://example.com/"', 1)
+        html = HOME.replace('href="./deploy/?product=pingshi-grade-helper"', 'href="https://example.com/"', 1)
         self.assertTrue(has(run(cd.check_home, "t", html), "施工中卡"))
 
     def test_version_mismatch(self):
