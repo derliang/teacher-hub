@@ -138,3 +138,5 @@
 - **兩區對應第 13 節的兩類工具**：「立即可用」＝直接線上執行型；「GAS 部署」＝自助部署型。GAS 區在平台通過真實 Google 驗收前只能是「候選」或「施工中・可預覽」。
 - **自助部署路徑**：`gas-deploy-helper` 的 `selfservice/publish.mjs` 預定發佈到本站 `/deploy/` 與 `/deploy/admin/`，之後取代第 10、14 節的 `/grade-deploy/` 與 `/admin/` 原型。在「發佈網頁」之前，原型維持原狀。
 - **實作狀態**：本節只記錄規範。首頁與兩個原型頁的實際改版是後續獨立工作，改版時依 DESIGN.md 並對照 `docs/design/mockups/`。
+- **防走樣機制（2026-10-25 補）**：頁面清冊 `docs/design/pages.json` 與 [PAGES.md](docs/design/PAGES.md)（層級、每層必備導覽、新增頁面流程、人工檢查）；唯一 token 來源 `docs/design/tokens.css`；自動檢查 `python scripts/check_design.py`（測試 `python scripts/test_check_design.py`）。**發布前檢查清單（第 6 節）新增兩條：`check_design.py` 全部通過；PAGES.md 第 5 節的人工檢查已做並寫進 PR 說明。**
+- **未完成的 GAS 工具**：只有「候選」（不可點）與「施工中・可預覽」（連到 `gas/<id>/` 預覽頁，不得有按鈕或登入）兩種呈現，見 DESIGN.md 5.1。`grade-deploy/`、`admin/` 列為會到期的舊風格過渡頁，`deploy/` 發布取代它們時一併刪除。

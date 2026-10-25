@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "notes": "Teacher Hub 頁面清冊（機器可讀）。repo 內每一個 .html 都必須登記在這裡，scripts/check_design.py 會逐頁檢查。新增、移動、刪除頁面都要同步改這個檔與 docs/design/PAGES.md。",
+  "pages": [
+    {
+      "path": "index.html",
+      "level": 0,
+      "kind": "home",
+      "nav": "home",
+      "title": "首頁",
+      "status": "live",
+      "mockup": "docs/design/mockups/首頁.html"
+    },
+    {
+      "path": "deploy/index.html",
+      "level": 1,
+      "kind": "deploy",
+      "nav": "sub",
+      "title": "GAS 自助部署（老師端）",
+      "status": "planned",
+      "mockup": "docs/design/mockups/自助部署.html",
+      "note": "由私人 repo gas-deploy-helper 的 selfservice/publish.mjs 產生；通過真實 Google 驗收且擁有者說「發佈網頁」後才會出現。出現後必須通過檢查才能合併。"
+    },
+    {
+      "path": "deploy/admin/index.html",
+      "level": 2,
+      "kind": "admin",
+      "nav": "sub",
+      "title": "部署平台管理",
+      "status": "planned",
+      "mockup": "docs/design/mockups/部署管理.html",
+      "note": "同上。"
+    },
+    {
+      "pattern": "gas/*/index.html",
+      "level": 1,
+      "kind": "gas-preview",
+      "nav": "sub",
+      "title": "GAS 工具預覽頁（每個候選或施工中的 GAS 工具一頁）",
+      "status": "pattern",
+      "mockup": "docs/design/mockups/GAS工具預覽頁.html"
+    },
+    {
+      "path": "grade-deploy/index.html",
+      "level": 1,
+      "kind": "legacy",
+      "nav": "none",
+      "title": "平時成績部署原型（舊風格過渡頁）",
+      "status": "legacy",
+      "expires": "deploy/index.html 發布並取代它時刪除",
+      "note": "舊原型，尚未套用新規範。只檢查檔頭版權、返回首頁連結與「施工中」標示。"
+    },
+    {
+      "path": "admin/index.html",
+      "level": 2,
+      "kind": "legacy",
+      "nav": "none",
+      "title": "管理後台原型（舊風格過渡頁）",
+      "status": "legacy",
+      "expires": "deploy/admin/index.html 發布並取代它時刪除",
+      "note": "舊原型，尚未套用新規範。只檢查檔頭版權、返回首頁連結與「施工中」標示。"
+    },
+    {
+      "path": "docs/design/mockups/首頁.html",
+      "level": 0,
+      "kind": "mockup",
+      "nav": "home",
+      "title": "首頁模擬頁",
+      "status": "mockup"
+    },
+    {
+      "path": "docs/design/mockups/自助部署.html",
+      "level": 1,
+      "kind": "mockup",
+      "nav": "sub",
+      "title": "自助部署模擬頁",
+      "status": "mockup"
+    },
+    {
+      "path": "docs/design/mockups/部署管理.html",
+      "level": 2,
+      "kind": "mockup",
+      "nav": "sub",
+      "title": "部署管理模擬頁",
+      "status": "mockup"
+    },
+    {
+      "path": "docs/design/mockups/GAS工具預覽頁.html",
+      "level": 1,
+      "kind": "mockup",
+      "nav": "sub",
+      "title": "GAS 工具預覽頁模擬頁",
+      "status": "mockup"
+    }
+  ]
+}
