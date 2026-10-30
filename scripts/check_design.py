@@ -296,8 +296,8 @@ def check_home(rel, html):
             if "cand" in classes and tag != "article":
                 err(rel, "候選卡必須是 <article>，不可有連結")
             if sid == "usable":
-                if not ({"live", "beta"} & set(classes)):
-                    err(rel, f"「立即可用」區只能放即開即用或 Beta 卡：class={cls.strip()}")
+                if not ({"live", "beta", "cand"} & set(classes)):
+                    err(rel, f"「立即可用」區只能放即開即用、Beta 或候選卡：class={cls.strip()}")
                 if href and not href.group(1).startswith("https://derliang.github.io/"):
                     err(rel, f"「立即可用」卡必須直接連到作者的 GitHub Pages：{href.group(1)}")
             else:
