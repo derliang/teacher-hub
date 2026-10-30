@@ -124,7 +124,7 @@ class Content(unittest.TestCase):
 
 class Home(unittest.TestCase):
     def test_wrong_count(self):
-        html = HOME.replace('<span class="count"><b>4</b>', '<span class="count"><b>9</b>', 1)
+        html = HOME.replace('<span class="count"><b>5</b>', '<span class="count"><b>9</b>', 1)
         self.assertTrue(has(run(cd.check_home, "t", html), "件數"))
 
     def test_card_without_label(self):
@@ -134,6 +134,11 @@ class Home(unittest.TestCase):
     def test_candidate_with_link(self):
         html = HOME.replace('<article class="card row cand"', '<a class="card row cand" href="x"', 1)
         self.assertTrue(has(run(cd.check_home, "t", html), "候選卡"))
+
+    def test_usable_zone_allows_candidate_but_not_wip(self):
+        self.assertFalse(has(run(cd.check_home, "t", HOME), "立即可用」區只能放"))
+        html = HOME.replace('<article class="card row cand" aria-label="問卷', '<article class="card row wip" aria-label="問卷', 1)
+        self.assertTrue(has(run(cd.check_home, "t", html), "立即可用」區只能放"))
 
     def test_usable_card_external_link_only_own_pages(self):
         html = HOME.replace("https://derliang.github.io/seat-helper/", "https://example.com/", 1)
