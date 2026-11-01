@@ -29,6 +29,7 @@
 ## 工具上架與下架
 
 - 上架、改狀態、下架的唯一流程在 [docs/PUBLISHING.md](docs/PUBLISHING.md)。先分區（「立即可用」或「GAS 部署」），再照該區的檢查清單做。
+- 任何 GitHub Pages 網站的發布方式（網址不得改、混放 repo 用 Actions 白名單、合併後驗證）見 [docs/PUBLISHING.md](docs/PUBLISHING.md) 第 6 節，改動前必讀。
 - 沒有擁有者在對話中明確同意，不得上架、改狀態或下架任何工具；不得因為搜尋到某個 repo 就自行收錄。
 - 上架前先問「使用者是一個人還是一群人」；多人同時使用的工具沒有後端，不得上架。
 - 每次發布同步 `site.json`、`CHANGELOG.md` 與 `index.html` 備援版本文字；工具版本以 `tools.json` 為唯一來源。
