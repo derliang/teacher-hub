@@ -135,3 +135,48 @@ GAS 工具的**後端**（授權閘門、產品 manifest、正式版發布包）
 | 做出「施工中」的 GAS 工具頁 | 讀 DESIGN.md 5.1：預覽頁不得有按鈕或登入 |
 | 說「push git」 | 指 `gas-deploy-helper`（私人、後端）的提交，不是 teacher-hub |
 | 說「發佈網頁」 | 指更新公開的 teacher-hub；合併 `main` 前仍要確認 |
+| 新增或改動任何 GitHub Pages 網站（含 seat-helper 等工具 repo） | 讀第 6 節：網址不得改、B 類要把新檔案加進 `deploy-pages.yml` 白名單、合併後驗證正式網址 |
+
+## 6. 網頁怎麼發布（GitHub Pages 規範）
+
+> 狀態：定案（擁有者 2026-11-01 要求）。適用於**所有**會放上 GitHub Pages 的 repo，不只 Teacher Hub 收錄的工具。目的：新對話不要再把內部文件公開、不要弄壞既有網址、不要把發布方式改回去。
+
+### 6.1 鐵則
+
+1. **公開網址不得改變。** `https://derliang.github.io/<repo>/` 一旦給人用（書籤、Teacher Hub 卡片、已發出的連結），就不可改 repo 名稱、不可改 Pages 網域；重新命名 repo 等於讓舊連結失效，必須先經擁有者同意。
+2. **沒有擁有者明確同意，不得新開、關閉或改 Pages 的來源類型。** 不得因為「看起來比較簡單」把 Actions 發布改回「從分支發布」。
+3. **公開 repo 不放機密。** 金鑰、Token、教師名單、學生資料、GAS 部署網址以外的內部識別一律不進公開 repo；提交前自查。
+4. **改完要親自驗證正式網址。** 合併後用瀏覽器或 `curl -I` 開正式網址，確認 200 且內容正確；推上 `main` 不等於已發布成功，Actions 失敗時網站會停在舊版。
+
+### 6.2 三種發布方式，擇一
+
+| 類型 | 適用 | Pages 設定 | 現況 repo |
+|---|---|---|---|
+| **A. 純網站 repo** | repo 根目錄只有網站檔案，沒有內部文件 | 從分支發布，`main` /（根目錄） | `teacher-notes-web`、`lunch-helper-web`（已封存）、`grad-check` |
+| **B. 原始碼與網站混放** | repo 同時有 `CLAUDE.md`、`TODO.md`、`docs/`、`tests/` 等內部文件 | **GitHub Actions**，`.github/workflows/deploy-pages.yml`，只上傳「白名單」內的網站檔案 | `seat-helper`、`cleaning-helper`、`exam-helper-clock` |
+| **C. 私人原始碼＋公開發布副本** | 原始碼要保密或有建置流程 | 私人 repo 建置，輸出到公開的純網站 repo（A 類） | `teacher-notes` → `teacher-notes-web`、`Lunch-Helper` → `lunch-helper-web` |
+
+預設：新工具若有內部文件，用 B；有保密原始碼，用 C；只有網站檔案才用 A。
+
+**已知例外與待辦（尚未處理，不得假裝已完成）：**
+- `physics-lab`：已用 Actions，但 `deploy.yml` 上傳整個目錄（`path: .`），內部文件也會上線；它的發布步驟會先產生目錄頁，改成白名單前要先確認哪些檔案是網站需要的。
+- `survey-feedback-helper`：從 `gh-pages` 分支發布，由 `deploy.yml` 建置後推送；暫時維持，未改。
+
+### 6.3 B 類（白名單）怎麼運作
+
+- 發布流程：`Stage site files` 把網站要用的檔案複製進 `_site/` → `Check local references exist` 檢查 HTML 內相對路徑的 `src`／`href` 都在 `_site/` → 上傳並部署。
+- **新增網站會用到的檔案（圖片、JS、字型、頁面、`vendor/`、`templates/` 等）時，必須同步加進 workflow 的 `Stage site files`**；漏掉時檢查步驟會擋下部署，網站維持舊版，不會壞掉。
+- 檢查只看 HTML 裡寫死的 `src`／`href`；程式用 `fetch()` 或動態組出的路徑它看不到，這類檔案要自己確認有放進白名單。
+- 內部文件（`CLAUDE.md`、`TODO.md`、`README.md`、`docs/`、`tests/`）刻意不在白名單，不要為了方便加進去。
+
+### 6.4 做發布相關改動的流程
+
+1. 在分支修改，開 PR；B 類先在本機模擬一次 `Stage site files` 與參照檢查。
+2. 改 Pages 來源類型前，先記下現況：`gh api repos/derliang/<repo>/pages --jq '[.build_type,.source.branch,.source.path]'`，並記下正式網址的 HTTP 狀態與檔案大小，合併後比對。
+3. 合併後立刻驗證：正式網址 200、大小與預期一致、`gh run list --workflow deploy-pages.yml --limit 1` 成功。
+4. 驗證失敗，**先回復再查原因**：`gh api -X PUT repos/derliang/<repo>/pages -f build_type=legacy -f 'source[branch]=main' -f 'source[path]=/'`（改回從 `main` 分支發布），網址不受影響。
+
+### 6.5 封存與下架
+
+- 封存 repo 不會讓 Pages 網址失效，網站仍可開；封存後無法再推送，要改內容得先解除封存。
+- 下架（見第 4 節）不刪公開 repo；Pages 要關閉另需擁有者同意。
