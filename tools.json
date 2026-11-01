@@ -37,7 +37,8 @@
       "releaseDate": "2026-11-01",
       "source": "https://github.com/derliang/survey-feedback-helper",
       "versionJson": "https://derliang.github.io/survey-feedback-helper/version.json",
-      "dateEvidence": "version.json version and releaseDate (published 2026-11-01)"
+      "dateFromVersionJson": true,
+      "dateEvidence": "version.json version and releaseDate"
     }
   ]
 }
