@@ -30,6 +30,14 @@
       "source": "https://github.com/derliang/teacher-notes-web",
       "versionJson": "https://derliang.github.io/teacher-notes-web/version.json",
       "dateEvidence": "version.json version and the commit that first set it"
+    },
+    {
+      "id": "survey-feedback-helper",
+      "version": "0.2.0",
+      "releaseDate": "2026-11-01",
+      "source": "https://github.com/derliang/survey-feedback-helper",
+      "versionJson": "https://derliang.github.io/survey-feedback-helper/version.json",
+      "dateEvidence": "version.json version and releaseDate (published 2026-11-01)"
     }
   ]
 }
