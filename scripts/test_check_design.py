@@ -137,7 +137,7 @@ class Home(unittest.TestCase):
 
     def test_usable_zone_allows_candidate_but_not_wip(self):
         self.assertFalse(has(run(cd.check_home, "t", HOME), "立即可用」區只能放"))
-        html = HOME.replace('<article class="card row cand" aria-label="問卷', '<article class="card row wip" aria-label="問卷', 1)
+        html = HOME.replace('<a class="card row live" href="https://derliang.github.io/survey-feedback-helper/"', '<a class="card row wip" href="https://derliang.github.io/survey-feedback-helper/"', 1)
         self.assertTrue(has(run(cd.check_home, "t", html), "立即可用」區只能放"))
 
     def test_usable_card_external_link_only_own_pages(self):
