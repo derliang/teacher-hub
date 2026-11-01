@@ -55,7 +55,10 @@ def latest_from_version_json(tool):
     if not m_url or not m_src or m_url.group(1) != m_src.group(1):
         raise ValueError("Tool has no dedicated rule and no valid versionJson/source pair")
     repo, path = m_src.group(1), m_url.group(2)
-    v = str(json.loads(fetch(url)).get("version", "")).lstrip("v")
+    published = json.loads(fetch(url))
+    v = str(published.get("version", "")).lstrip("v")
+    if tool.get("dateFromVersionJson"):  # version.json lives on gh-pages only, so the commits API cannot see it
+        return (*validate(v, str(published.get("releaseDate", ""))), "version.json version and releaseDate")
     commits = json.loads(fetch(f"https://api.github.com/repos/{OWNER}/{repo}/commits?path={path}&per_page=30"))
     first = None
     for c in commits:  # newest first; walk back while the file still carries the same version
