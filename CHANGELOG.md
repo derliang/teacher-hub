@@ -2,6 +2,12 @@
 
 此版號與日期只代表**入口網站**，不代表各工具程式的版本。
 
+## v1.15.0 — 2026-11-01
+- 「問卷回饋小幫手」候選卡轉為可點的「即開即用」卡片（擁有者要求正式開放，2026-11-01），整張卡連到 https://derliang.github.io/survey-feedback-helper/ 。分區：「立即可用」（單人使用、純網頁、無後端、資料不離開使用者裝置）。
+- 版本欄暫不顯示版本號：該工具尚無 `version.json`、Release 或 tag（`package.json` 為 0.0.0），沒有可靠的版本來源，故依 PUBLISHING 3.1 不填、不加入 `tools.json`；卡片底部改寫「2026-11-01 上線」（擁有者提供的上線日）。待該工具有版本來源後再補 `tools.json` 與 `data-tool`。
+- 件數不變（立即可用仍 5 款）；`test_check_design.py` 的對應測試改用 `cand` 以外的方式驗證。
+- 該工具仍從 `gh-pages` 分支發布（PUBLISHING 6.2 已知例外），未動。
+
 ## v1.14.0 — 2026-10-30
 - 新增「問卷回饋小幫手」候選卡（擁有者決定，2026-10-30）：放在「立即可用」區，虛線、不可點、標「候選」「尚未推出」。工具是純網頁、單人使用的 web app（讀 Google 表單匯出的問卷結果，統計後輸出班級總表與學生個人回饋單），所以分區是「立即可用」，不是 GAS 部署。專案 https://github.com/derliang/survey-feedback-helper ，目前仍在規劃階段、尚無 GitHub Pages 網址。
 - 規範例外：原本候選卡只限 GAS 區；現在「立即可用」區也允許不可點的候選卡，用於「已核准、網址尚未上線」的 web app。DESIGN.md、PUBLISHING.md、首頁模擬頁與 `check_design.py` 同步更新。
