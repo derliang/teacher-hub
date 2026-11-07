@@ -126,7 +126,7 @@ def check_token_contrast():
 
 EMOJI = re.compile("[\U0001F000-\U0001FAFF⌀-⏿☀-➿⬀-⯿️]")
 EMOJI_OK = {"✓", "✕"}  # ✓ ✕ 是規範允許的符號
-STATUS_TEXT = {"st-live": "即開即用", "st-beta": "Beta", "st-wip": "施工中・可預覽", "st-cand": "候選"}
+STATUS_TEXT = {"st-live": "即開即用", "st-beta": "Beta", "st-wip": "施工中・可預覽", "st-cand": "候選", "st-soon": "即將推出"}
 
 
 def visible_text(html):
