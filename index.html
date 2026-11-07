@@ -158,7 +158,7 @@ a.card:hover,a.card:focus-visible{transform:translateY(-3px);border-color:var(--
 .st{font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:2px;white-space:nowrap}
 .st-live{background:var(--chip-live-bg);color:var(--chip-live-fg)}
 .st-beta,.st-wip{background:var(--brass-soft);color:var(--brass)}
-.st-cand{border:1px dashed var(--ink3);color:var(--ink3)}
+.st-cand,.st-soon{border:1px dashed var(--ink3);color:var(--ink3)}
 .card h3{font-family:var(--serif);font-size:21px;line-height:1.3;margin:0}
 .lead{margin:0;color:var(--ink2);font-size:14.5px;line-height:1.75}
 .feat{display:flex;flex-wrap:wrap;margin:0;padding:0;list-style:none;font-size:13px;color:var(--ink3);line-height:1.8}
@@ -189,6 +189,38 @@ a.card:hover .go svg{translate:3px 0}
 }
 
 .empty{margin:0;padding:48px 0;color:var(--ink2)}
+
+/* 即將推出（預告區塊）：不可點、沒有連結；插畫全用 token，深淺色自動切換。 */
+.soon{padding-block:44px 40px;border-top:1px solid var(--line);scroll-margin-top:132px}
+.soon-grid{display:grid;gap:24px;grid-template-columns:minmax(0,1fr)}
+.soon-art{margin:0;border:1px dashed var(--ink3);border-radius:4px;background:var(--sunk);overflow:hidden}
+.soon-art svg{display:block;width:100%;height:auto}
+.soon-body{display:grid;gap:14px;align-content:start;min-width:0}
+.soon-body .meta{justify-content:flex-start;gap:10px}
+.soon-body h2{font-family:var(--serif);font-size:30px;line-height:1.3;margin:0;text-wrap:balance}
+.soon-body .lead{max-width:34em}
+.soon-list{display:grid;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.soon-list li{display:grid;gap:2px;padding:12px 0;border-bottom:1px solid var(--line-soft);min-width:0}
+.soon-list b{font-size:15px;color:var(--ink)}
+.soon-list span{font-size:14px;color:var(--ink2);line-height:1.7}
+.soon-note{display:flex;gap:12px;align-items:baseline;margin:0;padding:12px 14px;background:var(--brass-soft);border:1px solid var(--brass-line);border-radius:3px;color:var(--brass);font-size:14px;line-height:1.7}
+.soon-note::before{content:"";flex:none;width:8px;height:8px;background:var(--brass-line);transform:rotate(45deg) translateY(-1px)}
+.soon-note b{font-weight:700}
+.a-bg{fill:var(--sunk)}.a-grid{stroke:var(--line-soft);stroke-width:1}
+.a-card{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.a-head{fill:var(--primary)}.a-on{fill:var(--on-primary);font-family:var(--serif);font-weight:700}
+.a-ink{fill:var(--ink);font-family:var(--serif);font-weight:700}.a-ink3{fill:var(--ink3);font-family:var(--sans)}
+.a-bar{fill:var(--line)}.a-chip{fill:var(--chip-live-bg)}.a-soft{fill:var(--brass-soft);stroke:var(--brass-line);stroke-width:1.5}
+.a-line{fill:none;stroke:var(--primary);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.a-dot{fill:var(--surface);stroke:var(--primary);stroke-width:3.5}
+.a-brass{fill:none;stroke:var(--brass-line);stroke-width:8;stroke-linecap:round}
+.a-ring{fill:none;stroke:var(--line);stroke-width:8}
+.a-col{fill:var(--chip-live-fg);opacity:.9}.a-col2{fill:var(--brass-line)}
+@media (min-width:900px){
+  .soon{padding-block:64px 56px}
+  .soon-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:48px;align-items:center}
+  .soon-body h2{font-size:34px}
+}
 
 /* 頁尾（只有一個） */
 .foot-site{border-top:1px solid var(--line);background:var(--surface);padding-block:28px 26px;font-size:13px;color:var(--ink3);line-height:1.8}
@@ -249,10 +281,55 @@ a.card:hover .go svg{translate:3px 0}
 </div>
 </div></section>
 
+<section class="soon" id="soon" aria-labelledby="soon-h"><div class="wrap"><div class="soon-grid">
+<figure class="soon-art"><svg viewBox="0 0 640 440" role="img" aria-label="平時成績小幫手示意圖：左邊是一場場獨立的考試，右上是成績趨勢，右下是家長用手機查詢">
+<rect class="a-bg" width="640" height="440"/>
+<g class="a-grid"><path d="M0 110H640M0 220H640M0 330H640"/></g>
+<g>
+<rect class="a-card" x="32" y="48" width="262" height="344" rx="4"/>
+<rect class="a-head" x="32" y="48" width="262" height="48" rx="4"/><rect class="a-head" x="32" y="80" width="262" height="16"/>
+<text class="a-on" x="52" y="79" font-size="20">考試事件</text>
+<rect class="a-soft" x="52" y="116" width="222" height="68" rx="3"/><rect class="a-chip" x="66" y="130" width="52" height="22" rx="2"/><rect class="a-bar" x="66" y="162" width="130" height="8" rx="2"/><text class="a-ink" x="132" y="147" font-size="18">平時考</text>
+<rect class="a-card" x="52" y="198" width="222" height="68" rx="3"/><rect class="a-chip" x="66" y="212" width="52" height="22" rx="2"/><rect class="a-bar" x="66" y="244" width="104" height="8" rx="2"/><text class="a-ink" x="132" y="229" font-size="18">平時考</text>
+<rect class="a-card" x="52" y="280" width="222" height="68" rx="3"/><rect class="a-chip" x="66" y="294" width="52" height="22" rx="2"/><rect class="a-bar" x="66" y="326" width="148" height="8" rx="2"/><text class="a-ink" x="132" y="311" font-size="18">定期考</text>
+<rect class="a-bar" x="52" y="362" width="222" height="3"/>
+</g>
+<g>
+<rect class="a-card" x="322" y="48" width="290" height="190" rx="4"/>
+<text class="a-ink" x="342" y="82" font-size="20">成績趨勢</text>
+<rect class="a-col" x="350" y="170" width="26" height="40" rx="2"/><rect class="a-col" x="398" y="150" width="26" height="60" rx="2"/><rect class="a-col" x="446" y="158" width="26" height="52" rx="2"/><rect class="a-col" x="494" y="130" width="26" height="80" rx="2"/><rect class="a-col" x="542" y="116" width="26" height="94" rx="2"/>
+<path class="a-bar" d="M342 214H592" stroke="var(--line)" stroke-width="2"/>
+<polyline class="a-line" points="363,146 411,124 459,134 507,104 555,90"/>
+<circle class="a-dot" cx="363" cy="146" r="6"/><circle class="a-dot" cx="411" cy="124" r="6"/><circle class="a-dot" cx="459" cy="134" r="6"/><circle class="a-dot" cx="507" cy="104" r="6"/><circle class="a-dot" cx="555" cy="90" r="6"/>
+</g>
+<g>
+<rect class="a-card" x="322" y="258" width="290" height="134" rx="4"/>
+<rect class="a-card" x="342" y="276" width="76" height="116" rx="4"/><rect class="a-head" x="342" y="276" width="76" height="22" rx="4"/><rect class="a-head" x="342" y="288" width="76" height="10"/>
+<circle class="a-ring" cx="380" cy="336" r="17"/><path class="a-brass" d="M380 319A17 17 0 0 1 396 342"/>
+<rect class="a-bar" x="356" y="364" width="48" height="6" rx="2"/>
+<text class="a-ink" x="442" y="318" font-size="20">家長查詢</text>
+<rect class="a-bar" x="442" y="332" width="140" height="8" rx="2"/><rect class="a-bar" x="442" y="352" width="104" height="8" rx="2"/><rect class="a-col2" x="442" y="372" width="64" height="8" rx="2"/>
+</g>
+</svg></figure>
+<div class="soon-body">
+<div class="meta"><span class="tag">成績管理</span><span class="st st-soon">即將推出</span></div>
+<h2 id="soon-h">平時成績小幫手</h2>
+<p class="lead">給國高中導師與任課老師的平時考與定期考成績系統。一場考試就是一個獨立事件，登記、統計、查詢都從這個單位開始。</p>
+<ul class="soon-list">
+<li><b>登記、統計與趨勢</b><span>登記每場考試的成績，算平均與排名，看成績趨勢。</span></li>
+<li><b>單班為主，也能管多個班</b><span>以單班單導師為主；同一位老師也能管理其他班級。</span></li>
+<li><b>名冊與考試管理</b><span>匯入班級名冊；考試可以開放與收回。</span></li>
+<li><b>輸入有紀錄</b><span>成績輸入與修改都留有紀錄。</span></li>
+<li><b>家長查詢</b><span>家長可以查詢自己孩子的成績。</span></li>
+</ul>
+<p class="soon-note"><b>尚未推出</b>目前沒有可開啟的程式。</p>
+</div>
+</div></div></section>
+
 <div class="wrap"><p class="empty" id="empty" role="status" hidden>沒有符合的工具，請換個關鍵字試試。</p></div>
 </main>
 
-<footer class="foot-site"><div class="wrap"><div class="fhead"><strong>Teacher Hub · Made for Teachers</strong><a class="top-link" href="#top">回到頂端 ↑</a></div><p class="fnote">每一個小工具，都是為了讓老師的日常更輕鬆。</p><div class="flegal"><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></span><span class="version-meta" id="site-version" aria-live="polite">首頁版本 v1.16.0｜更新日期 2026-11-07</span></div></div></footer>
+<footer class="foot-site"><div class="wrap"><div class="fhead"><strong>Teacher Hub · Made for Teachers</strong><a class="top-link" href="#top">回到頂端 ↑</a></div><p class="fnote">每一個小工具，都是為了讓老師的日常更輕鬆。</p><div class="flegal"><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></span><span class="version-meta" id="site-version" aria-live="polite">首頁版本 v1.17.0｜更新日期 2026-11-07</span></div></div></footer>
 
 <script>
 fetch('./site.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('metadata');return r.json()}).then(m=>{if(/^\d+\.\d+\.\d+$/.test(m.version)&&/^\d{4}-\d{2}-\d{2}$/.test(m.updated)){document.getElementById('site-version').textContent='首頁版本 v'+m.version+'｜更新日期 '+m.updated}}).catch(()=>{});
@@ -263,7 +340,7 @@ fetch('./tools.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('metadata
 // 搜尋涵蓋「立即可用」與「GAS 部署」兩區；整區都沒有符合時，連區段一起收起。
 const nav=document.getElementById('nav'),search=document.getElementById('search'),sbtn=document.getElementById('sbtn'),empty=document.getElementById('empty');
 const zones=[...document.querySelectorAll('.zone')],cards=[...document.querySelectorAll('.card')];
-function filter(){const q=search.value.trim().toLocaleLowerCase();let shown=0;for(const card of cards){const ok=card.textContent.toLocaleLowerCase().includes(q);card.hidden=!ok;if(ok)shown++;}for(const z of zones)z.hidden=!z.querySelector('.card:not([hidden])');empty.hidden=shown>0;spy();}
+function filter(){const q=search.value.trim().toLocaleLowerCase();let shown=0;for(const card of cards){const ok=card.textContent.toLocaleLowerCase().includes(q);card.hidden=!ok;if(ok)shown++;}for(const z of zones)z.hidden=!z.querySelector('.card:not([hidden])');for(const s of document.querySelectorAll('.soon'))s.hidden=!s.textContent.toLocaleLowerCase().includes(q);empty.hidden=shown>0||!!document.querySelector('.soon:not([hidden])');spy();}
 search.addEventListener('input',filter);
 search.addEventListener('keydown',e=>{if(e.key==='Escape'){search.value='';filter();if(matchMedia('(max-width:599px)').matches){nav.classList.remove('open');sbtn.setAttribute('aria-expanded','false');sbtn.focus();}}});
 sbtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');sbtn.setAttribute('aria-expanded',open);if(open)search.focus();});
