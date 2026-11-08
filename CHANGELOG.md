@@ -2,6 +2,10 @@
 
 此版號與日期只代表**入口網站**，不代表各工具程式的版本。
 
+## v1.19.0 — 2026-11-09
+- 「模擬考小幫手」由 **Beta** 卡轉為「**即開即用**」（擁有者要求正式發布，2026-11-09），版本 v1.0.0（發布日 2026-11-09），仍整張卡連到 https://derliang.github.io/mock-exam-helper/ 。已親自開啟正式網址，確認頁首沒有 beta 標示、`version.json` 為 1.0.0。
+- 版本來源不變：該工具的 `version.json`（`tools.json` 同步更新為 1.0.0）。件數不變；首頁模擬頁的模擬考小幫手卡（原仍是候選）同步改成即開即用。以後該工具有修正才改版號（擁有者指示）。
+
 ## v1.18.0 — 2026-11-08
 - 「模擬考小幫手」候選卡轉為可點的 **Beta** 卡（擁有者要求，2026-11-08），整張卡連到 https://derliang.github.io/mock-exam-helper/ 。分區：「立即可用」（單人使用、純網頁、無後端、學生資料只存在使用者自己的電腦）。已親自開啟正式網址確認可載入。
 - 版本來源：該工具發布 `version.json`（`https://derliang.github.io/mock-exam-helper/version.json`，v0.1.0-beta.1，發布日 2026-11-08 = Beta 標示併入日），加入 `tools.json`（`dateFromVersionJson`），卡片加 `data-tool="mock-exam-helper"`。
