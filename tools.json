@@ -39,6 +39,15 @@
       "versionJson": "https://derliang.github.io/survey-feedback-helper/version.json",
       "dateFromVersionJson": true,
       "dateEvidence": "version.json version and releaseDate"
+    },
+    {
+      "id": "mock-exam-helper",
+      "version": "0.1.0-beta.1",
+      "releaseDate": "2026-11-08",
+      "source": "https://github.com/derliang/mock-exam-helper",
+      "versionJson": "https://derliang.github.io/mock-exam-helper/version.json",
+      "dateFromVersionJson": true,
+      "dateEvidence": "version.json version and releaseDate"
     }
   ]
 }
