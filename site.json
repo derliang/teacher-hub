@@ -1,6 +1,6 @@
 {
   "name": "Teacher Hub｜教師小幫手",
-  "version": "1.17.0",
-  "updated": "2026-11-07",
-  "changes": "新增「平時成績小幫手」即將推出預告區塊（不可點、無連結）。"
+  "version": "1.18.0",
+  "updated": "2026-11-08",
+  "changes": "「模擬考小幫手」由候選卡改為可點的 Beta 卡，連到其 GitHub Pages 正式網址。"
 }
