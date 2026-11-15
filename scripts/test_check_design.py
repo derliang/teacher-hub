@@ -124,7 +124,7 @@ class Content(unittest.TestCase):
 
 class Home(unittest.TestCase):
     def test_wrong_count(self):
-        html = HOME.replace('<span class="count"><b>5</b>', '<span class="count"><b>9</b>', 1)
+        html = re.sub(r'<span class="count"><b>\d+</b>', '<span class="count"><b>99</b>', HOME, count=1)
         self.assertTrue(has(run(cd.check_home, "t", html), "件數"))
 
     def test_card_without_label(self):
