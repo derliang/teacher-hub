@@ -33,7 +33,7 @@
     },
     {
       "id": "survey-feedback-helper",
-      "version": "0.2.14",
+      "version": "0.2.16",
       "releaseDate": "2026-11-16",
       "source": "https://github.com/derliang/survey-feedback-helper",
       "versionJson": "https://derliang.github.io/survey-feedback-helper/version.json",
