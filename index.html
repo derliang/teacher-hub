@@ -206,6 +206,9 @@ a.card:hover .go svg{translate:3px 0}
 .soon-note{display:flex;gap:12px;align-items:baseline;margin:0;padding:12px 14px;background:var(--brass-soft);border:1px solid var(--brass-line);border-radius:3px;color:var(--brass);font-size:14px;line-height:1.7}
 .soon-note::before{content:"";flex:none;width:8px;height:8px;background:var(--brass-line);transform:rotate(45deg) translateY(-1px)}
 .soon-note b{font-weight:700}
+.soon-guide{margin:0}
+.soon-guide a{display:inline-flex;align-items:center;min-height:44px;color:var(--primary);font-weight:500;text-decoration:none;border-bottom:1px solid var(--brass-line)}
+.soon-guide a:hover{border-bottom-color:var(--primary)}
 .a-bg{fill:var(--sunk)}.a-grid{stroke:var(--line-soft);stroke-width:1}
 .a-card{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
 .a-head{fill:var(--primary)}.a-on{fill:var(--on-primary);font-family:var(--serif);font-weight:700}
@@ -302,6 +305,7 @@ a.card:hover .go svg{translate:3px 0}
 <li><b>家長查詢</b><span>家長可以查詢自己孩子的成績。</span></li>
 </ul>
 <p class="soon-note"><b>尚未推出</b>目前沒有可開啟的程式。</p>
+<p class="soon-guide"><a href="./scorekeeper-guide/">想自己架設？看網頁版安裝指引 →</a></p>
 </div>
 </div></div>
 <div class="rows two">
@@ -330,7 +334,7 @@ a.card:hover .go svg{translate:3px 0}
 <div class="wrap"><p class="empty" id="empty" role="status" hidden>沒有符合的工具，請換個關鍵字試試。</p></div>
 </main>
 
-<footer class="foot-site"><div class="wrap"><div class="fhead"><strong>Teacher Hub · Made for Teachers</strong><a class="top-link" href="#top">回到頂端 ↑</a></div><p class="fnote">每一個小工具，都是為了讓老師的日常更輕鬆。</p><div class="flegal"><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></span><span class="version-meta" id="site-version" aria-live="polite">首頁版本 v1.20.0｜更新日期 2026-11-15</span></div></div></footer>
+<footer class="foot-site"><div class="wrap"><div class="fhead"><strong>Teacher Hub · Made for Teachers</strong><a class="top-link" href="#top">回到頂端 ↑</a></div><p class="fnote">每一個小工具，都是為了讓老師的日常更輕鬆。</p><div class="flegal"><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></span><span class="version-meta" id="site-version" aria-live="polite">首頁版本 v1.21.0｜更新日期 2026-11-17</span></div></div></footer>
 
 <script>
 fetch('./site.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('metadata');return r.json()}).then(m=>{if(/^\d+\.\d+\.\d+$/.test(m.version)&&/^\d{4}-\d{2}-\d{2}$/.test(m.updated)){document.getElementById('site-version').textContent='首頁版本 v'+m.version+'｜更新日期 '+m.updated}}).catch(()=>{});
