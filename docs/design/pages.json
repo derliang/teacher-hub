@@ -32,6 +32,16 @@
       "note": "同上。"
     },
     {
+      "path": "scorekeeper-guide/index.html",
+      "level": 1,
+      "kind": "deploy",
+      "nav": "sub",
+      "title": "成績小幫手網頁版安裝指引（純靜態說明頁）",
+      "status": "live",
+      "mockup": "docs/design/mockups/成績小幫手安裝指引.html",
+      "note": "只有說明文字，無腳本、無 API、不含實例網址或資料庫 ID；樣式 ../deploy/assets/app.css ＋ scorekeeper-guide/guide.css。"
+    },
+    {
       "pattern": "gas/*/index.html",
       "level": 1,
       "kind": "gas-preview",
@@ -59,6 +69,14 @@
       "status": "legacy",
       "expires": "deploy/admin/index.html 發布並取代它時刪除",
       "note": "舊原型，尚未套用新規範。只檢查檔頭版權、返回首頁連結與「施工中」標示。"
+    },
+    {
+      "path": "docs/design/mockups/成績小幫手安裝指引.html",
+      "level": 1,
+      "kind": "mockup",
+      "nav": "sub",
+      "title": "成績小幫手安裝指引模擬頁",
+      "status": "mockup"
     },
     {
       "path": "docs/design/mockups/首頁.html",

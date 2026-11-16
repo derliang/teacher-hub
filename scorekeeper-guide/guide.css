@@ -1,0 +1,17 @@
+/*
+Copyright (c) 2026 derliang. All rights reserved.
+Non-commercial use only. See LICENSE.md.
+Authorization inquiries: derliang@gmail.com
+
+成績小幫手網頁版安裝指引的補充樣式。token 由 ../deploy/assets/app.css（與 docs/design/tokens.css 一致）提供，
+這裡只用 var(--token)，不寫死色碼。
+*/
+.gsteps{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.gsteps > li.panel h2{display:flex;align-items:center;gap:12px}
+.gnum{flex:none;display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--primary);color:var(--on-primary);font:700 15px/1 var(--sans)}
+.gcmd{margin:0;padding:12px 14px;background:var(--sunk);color:var(--ink);border:1px solid var(--line);border-radius:4px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.7;overflow-x:auto;white-space:pre}
+.gcmd:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.gnote{font-size:13.5px;color:var(--ink3)}
+.glist{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.glist li{display:flex;gap:10px;color:var(--ink2);font-size:14.5px}
+.glist li::before{content:"";flex:none;width:7px;height:7px;margin-top:.7em;background:var(--brass-line);transform:rotate(45deg)}

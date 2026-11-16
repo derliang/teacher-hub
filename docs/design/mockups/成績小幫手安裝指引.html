@@ -1,0 +1,109 @@
+<!doctype html>
+<!--
+Copyright (c) 2026 derliang. All rights reserved.
+Non-commercial use only. See LICENSE.md.
+Authorization inquiries: derliang@gmail.com
+
+成績小幫手網頁版｜安裝指引（/scorekeeper-guide/）。純靜態頁：只有說明文字，沒有腳本、沒有 API 呼叫、不含任何網站實例網址或資料庫 ID。
+樣式沿用 deploy/assets/app.css（token 與 docs/design/tokens.css 一致），本頁另有 guide.css 放步驟與指令區塊。
+內容與來源：scorekeeper-web 專案 docs/部署指南.md 的「一鍵部署」。外觀規則見 docs/design/DESIGN.md。
+-->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2f0ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1524" media="(prefers-color-scheme: dark)">
+<meta name="referrer" content="no-referrer">
+<title>成績小幫手網頁版安裝指引｜Teacher Hub</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../../deploy/assets/app.css">
+<link rel="stylesheet" href="../../../scorekeeper-guide/guide.css">
+</head>
+<body id="top">
+<nav class="nav" aria-label="主要導覽"><div class="wrap">
+  <a class="brand" href="../../../index.html"><span class="mark" aria-hidden="true">T</span><span><b>Teacher Hub</b><small>教師小幫手</small></span></a>
+  <div class="links"><a href="../../../index.html#usable">立即可用</a><a href="../../../index.html#gas">GAS 部署</a></div>
+  <div class="tabs"><a href="../../../index.html#usable">立即可用</a><a href="../../../index.html#gas">GAS 部署</a></div>
+</div></nav>
+
+<main class="wrap narrow">
+  <nav class="crumbs" aria-label="所在位置"><a href="../../../index.html">Teacher Hub 首頁</a><span aria-hidden="true">›</span><b aria-current="page">成績小幫手網頁版安裝指引</b></nav>
+  <div class="pagehead">
+    <span class="kicker">INSTALL GUIDE</span>
+    <h1>把成績小幫手網頁版，放到你自己的 Cloudflare</h1>
+    <p>程式安裝在你自己的 Cloudflare 免費帳號，網站與成績資料都只屬於你，不經過任何人的伺服器。全程一行指令，你只需要登入，並自己輸入一組安裝碼。</p>
+  </div>
+
+  <div class="stack">
+    <div class="notice warn" role="note"><b>施工中</b>｜成績小幫手網頁版尚未推出。這份指引先行公開，指令尚未對全新的 Cloudflare 帳號完整實測，實際畫面與文字以你看到的為準。</div>
+
+    <section class="panel">
+      <h2>先知道三件事</h2>
+      <ul class="glist">
+        <li><span>你的成績網站是<b>私人</b>的，網址只有你自己和你開通的老師知道；本頁不會列出任何網站網址。</span></li>
+        <li><span>安裝碼是你自己想的一串字（至少 8 個字元，建議 16 個以上），只用來防止別人搶先完成初始化。腳本不會代你產生、讀取、印出或儲存它。</span></li>
+        <li><span>Cloudflare 的註冊、登入與同意都由你本人操作；不要把密碼或金鑰貼給任何人。</span></li>
+      </ul>
+    </section>
+
+    <ol class="gsteps">
+      <li class="panel">
+        <h2><span class="gnum" aria-hidden="true">1</span>建立 Cloudflare 帳號</h2>
+        <p>用 Email 註冊，免費方案即可。註冊頁的欄位是 Email、Password，按鈕是 Create Account；Cloudflare 會寄驗證信到你的信箱，依信件完成驗證。</p>
+      </li>
+      <li class="panel">
+        <h2><span class="gnum" aria-hidden="true">2</span>取得程式，安裝套件</h2>
+        <p>取得成績小幫手網頁版的程式資料夾（由管理員提供），電腦需有 Node.js 20 以上。在該資料夾開終端機，執行一次：</p>
+        <pre class="gcmd" tabindex="0">npm install</pre>
+      </li>
+      <li class="panel">
+        <h2><span class="gnum" aria-hidden="true">3</span>登入 Cloudflare</h2>
+        <p>執行下面這行，會開瀏覽器，由你本人登入並同意授權。沒登入時後面的指令會卡住不回。</p>
+        <pre class="gcmd" tabindex="0">npx wrangler login</pre>
+      </li>
+      <li class="panel">
+        <h2><span class="gnum" aria-hidden="true">4</span>執行一行指令部署</h2>
+        <p>它會自動建立資料庫、產生設定、套用資料庫結構、部署，最後用中文告訴你健康檢查結果。每一步都有說明，中途停下來可以直接重跑，不會重複建立。</p>
+        <pre class="gcmd" tabindex="0">npm run setup</pre>
+        <p>想先看它會做什麼、完全不連 Cloudflare：</p>
+        <pre class="gcmd" tabindex="0">npm run setup -- --dry-run</pre>
+        <p class="gnote">你的資料庫 ID 只會寫進專案資料夾裡的 <span class="mono">wrangler.deploy.jsonc</span>，這個檔案不會被上傳到 GitHub。</p>
+      </li>
+      <li class="panel">
+        <h2><span class="gnum" aria-hidden="true">5</span>輸入安裝碼，再執行一次</h2>
+        <p>第一次執行會停在這一步。請照它印出的指令，由你本人輸入安裝碼（輸入時畫面不會顯示），再重跑 <span class="mono">npm run setup</span>：</p>
+        <pre class="gcmd" tabindex="0">npx wrangler secret put INSTALL_CODE -c wrangler.deploy.jsonc
+npm run setup</pre>
+        <p class="gnote">第一次設密鑰時，若問「There doesn't seem to be a Worker called …」要不要建立，答 yes。</p>
+      </li>
+      <li class="panel">
+        <h2><span class="gnum" aria-hidden="true">6</span>建立第一位管理者</h2>
+        <p>腳本最後會印出你的網站網址。照它印的網址，在後面加上 <span class="mono">/setup.html</span> 開啟初始化精靈：環境檢查、輸入安裝碼、選「從空白開始」、建立管理者，完成後到登入頁登入。第一位管理者建好之後，別人拿安裝碼也不能再初始化。</p>
+      </li>
+    </ol>
+
+    <section class="panel">
+      <h2>健康檢查怎麼看</h2>
+      <p>腳本最後會讀網站的健康檢查並用中文說明。剛部署完，下面兩項不是問題：</p>
+      <ul class="glist">
+        <li><span>「排程尚未執行」：約 10～15 分鐘後才會開始，這段時間顯示未執行是正常的。</span></li>
+        <li><span>「家長查詢網址未設」：只影響通知裡的查詢連結，之後再補即可。</span></li>
+      </ul>
+      <p>若出現 ✕ 開頭的項目，照腳本印出的中文建議處理後，重跑 <span class="mono">npm run setup</span> 即可。</p>
+    </section>
+
+    <section class="panel">
+      <h2>常見問題</h2>
+      <ul class="glist">
+        <li><span><b>要花錢嗎？</b>用 Cloudflare 免費方案即可，日常使用遠低於免費額度。</span></li>
+        <li><span><b>帳號裡已經有同名資料庫怎麼辦？</b>腳本預設資料庫名稱是 scorekeeper，找得到同名的就沿用；那是別的用途時，加上 <span class="mono">--db-name 另取的名字</span>。</span></li>
+        <li><span><b>怎麼更新到新版？</b>取得新版程式後，再執行一次 <span class="mono">npm run setup</span>。</span></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer class="foot-site"><div class="wrap"><div class="fhead"><strong>Teacher Hub · Made for Teachers</strong><a class="top-link" href="#top">回到頂端 ↑</a></div><p class="fnote">成績小幫手網頁版安裝指引｜只有說明文字，不蒐集任何資料；你的網站與資料只在你自己的 Cloudflare 帳號。</p><div class="flegal"><span class="cr">© 2026 derliang｜保留所有權利｜限非營利使用｜<a href="https://github.com/derliang/teacher-hub/blob/main/LICENSE.md" target="_blank" rel="noopener">授權說明</a></span></div></div></footer>
+</body>
+</html>
