@@ -1,6 +1,6 @@
 {
   "name": "Teacher Hub｜教師小幫手",
-  "version": "1.20.0",
-  "updated": "2026-11-15",
-  "changes": "新增「調課小幫手」候選卡（立即可用區，不可點）。"
+  "version": "1.21.0",
+  "updated": "2026-11-17",
+  "changes": "新增「成績小幫手網頁版安裝指引」頁（scorekeeper-guide/），首頁預告區塊加入口連結。"
 }

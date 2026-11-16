@@ -36,6 +36,7 @@ Authorization inquiries: derliang@gmail.com
 | `index.html` | L0 | 首頁 | 上線 | `mockups/首頁.html` |
 | `deploy/index.html` | L1 | 自助部署（老師端，前端介面） | 上線（閘門網址未設定時只顯示「平台尚未開放」） | `mockups/自助部署.html` |
 | `deploy/admin/index.html` | L2 | 部署管理（前端介面） | 上線（同上） | `mockups/部署管理.html` |
+| `scorekeeper-guide/index.html` | L1 | 成績小幫手網頁版安裝指引（純靜態說明頁，首頁預告區塊有入口連結） | 上線（頁面標「施工中」） | `mockups/成績小幫手安裝指引.html` |
 | `gas/*/index.html` | L1 | GAS 工具預覽頁（每個候選或施工中的工具一頁） | 規則已定，尚無頁面 | `mockups/GAS工具預覽頁.html` |
 | `grade-deploy/index.html` | L1 | 舊連結轉址頁（原平時成績部署原型） | **過渡頁（例外）** | 無 |
 | `admin/index.html` | L2 | 管理後台原型 | **舊風格過渡頁（例外）** | 無 |
