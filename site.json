@@ -1,6 +1,6 @@
 {
   "name": "Teacher Hub｜教師小幫手",
-  "version": "1.21.0",
-  "updated": "2026-11-17",
-  "changes": "新增「成績小幫手網頁版安裝指引」頁（scorekeeper-guide/），首頁預告區塊加入口連結。"
+  "version": "1.22.0",
+  "updated": "2026-11-18",
+  "changes": "「模擬考小幫手」改名「考務小幫手」，版號同步 v1.26.0。"
 }
