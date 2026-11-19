@@ -42,8 +42,8 @@
     },
     {
       "id": "mock-exam-helper",
-      "version": "1.26.20",
-      "releaseDate": "2026-11-19",
+      "version": "1.26.27",
+      "releaseDate": "2026-11-20",
       "source": "https://github.com/derliang/mock-exam-helper",
       "versionJson": "https://derliang.github.io/mock-exam-helper/version.json",
       "dateFromVersionJson": true,
