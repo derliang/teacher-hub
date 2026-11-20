@@ -2,6 +2,9 @@
 
 此版號與日期只代表**入口網站**，不代表各工具程式的版本。
 
+## v1.22.1 — 2026-11-20
+- 考務小幫手 GitHub repo 改名為 `exam-affairs-helper`（擁有者 2026-11-20），舊網址 `derliang.github.io/mock-exam-helper/` 已失效，首頁卡片連結、`tools.json` 的 id／source／versionJson、首頁備援版本文字與模擬頁一併改為新網址；版本同步 v1.26.38。
+
 ## v1.22.0 — 2026-11-18
 - 「模擬考小幫手」卡片改名「**考務小幫手**」（含 aria-label、插畫替代文字、插畫 SVG 說明），版本同步為 v1.26.0（發布日 2026-11-18；`tools.json` 與首頁備援文字一致）。依擁有者要求發布最新版（2026-11-18，經調度員轉達）。
 - **連結不變**：href 與 `tools.json` 的 source／versionJson 仍是 `mock-exam-helper` 網址（repo 尚未改名，舊網址目前有效；改名後再另案更新）。「模擬考」作為功能類型的用語未改。件數不變；沒有新增頁面。
