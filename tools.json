@@ -4,7 +4,7 @@
   "tools": [
     {
       "id": "seat-helper",
-      "version": "3.5.2",
+      "version": "3.5.3",
       "releaseDate": "2026-11-22",
       "source": "https://github.com/derliang/seat-helper",
       "dateEvidence": "README.md version release entry"
@@ -42,8 +42,8 @@
     },
     {
       "id": "exam-affairs-helper",
-      "version": "1.27.17",
-      "releaseDate": "2026-11-21",
+      "version": "1.27.18",
+      "releaseDate": "2026-11-22",
       "source": "https://github.com/derliang/exam-affairs-helper",
       "versionJson": "https://derliang.github.io/exam-affairs-helper/version.json",
       "dateFromVersionJson": true,
