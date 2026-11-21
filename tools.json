@@ -4,8 +4,8 @@
   "tools": [
     {
       "id": "seat-helper",
-      "version": "3.5.1",
-      "releaseDate": "2026-11-21",
+      "version": "3.5.2",
+      "releaseDate": "2026-11-22",
       "source": "https://github.com/derliang/seat-helper",
       "dateEvidence": "README.md version release entry"
     },
