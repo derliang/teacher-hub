@@ -4,7 +4,7 @@
   "tools": [
     {
       "id": "seat-helper",
-      "version": "3.6.0",
+      "version": "3.7.1",
       "releaseDate": "2026-11-22",
       "source": "https://github.com/derliang/seat-helper",
       "dateEvidence": "README.md version release entry"
@@ -33,8 +33,8 @@
     },
     {
       "id": "survey-feedback-helper",
-      "version": "0.2.17",
-      "releaseDate": "2026-11-17",
+      "version": "0.2.18",
+      "releaseDate": "2026-11-22",
       "source": "https://github.com/derliang/survey-feedback-helper",
       "versionJson": "https://derliang.github.io/survey-feedback-helper/version.json",
       "dateFromVersionJson": true,
@@ -42,7 +42,7 @@
     },
     {
       "id": "exam-affairs-helper",
-      "version": "1.27.21",
+      "version": "1.27.28",
       "releaseDate": "2026-11-22",
       "source": "https://github.com/derliang/exam-affairs-helper",
       "versionJson": "https://derliang.github.io/exam-affairs-helper/version.json",
