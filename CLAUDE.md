@@ -48,3 +48,7 @@
 ## 去識別化（使用者 2026-11-19 硬規則）
 
 - 任何檔案、程式碼、測試資料、文件、commit 訊息、PR 說明，一律不得出現作者的真實中文姓名或所屬學校名稱；署名只用公開代號 derliang，學校一律寫「○○中學」。commit 作者名一律用 derliang。寫入前自查，違者退回。
+
+## 本機 pre-push
+
+- push 前會自動執行 `python scripts/check_design.py`、`python scripts/test_check_design.py` 與 `node --test scripts/test_deploy_frontend.mjs scripts/test_wizard_contract.mjs`（約 2 秒，離線），沒過就擋下 push。新 clone 先執行 `git config core.hooksPath .githooks` 啟用。

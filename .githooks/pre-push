@@ -1,0 +1,19 @@
+#!/bin/sh
+# 本機 CI：push 前跑快速測試，沒過就擋下（不要用 --no-verify 繞過）。
+cd "$(git rev-parse --show-toplevel)" || exit 1
+# git 執行 hook 時會帶入 GIT_DIR 等變數；測試若會建暫存 git repo，不清掉就會操作到這個 repo。
+for v in $(env | sed -n 's/^\(GIT_[A-Za-z_]*\)=.*/\1/p'); do unset "$v"; done
+PY=""
+for cand in python "py -3"; do
+  $cand -c "import sys" >/dev/null 2>&1 && { PY="$cand"; break; }
+done
+[ -n "$PY" ] || { echo "[pre-push] 找不到 Python 3，請先安裝 Python 3（環境問題，不是測試失敗）。" >&2; exit 1; }
+command -v node >/dev/null 2>&1 || { echo "[pre-push] 找不到 node，請先安裝 Node.js（環境問題，不是測試失敗）。" >&2; exit 1; }
+fail() { echo "[pre-push] 測試沒過，已擋下 push。修好再推。" >&2; exit 1; }
+echo "[pre-push] 設計規範檢查（scripts/check_design.py）…"
+$PY scripts/check_design.py || fail
+echo "[pre-push] 設計檢查程式自測（scripts/test_check_design.py）…"
+$PY scripts/test_check_design.py || fail
+echo "[pre-push] 自助部署前端測試（node --test）…"
+node --test scripts/test_deploy_frontend.mjs scripts/test_wizard_contract.mjs || fail
+echo "[pre-push] 通過"
