@@ -42,8 +42,8 @@
     },
     {
       "id": "exam-affairs-helper",
-      "version": "1.29.1",
-      "releaseDate": "2026-11-23",
+      "version": "1.30.0",
+      "releaseDate": "2026-11-24",
       "source": "https://github.com/derliang/exam-affairs-helper",
       "versionJson": "https://derliang.github.io/exam-affairs-helper/version.json",
       "dateFromVersionJson": true,
