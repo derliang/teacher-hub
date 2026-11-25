@@ -14,6 +14,8 @@ echo "[pre-push] 設計規範檢查（scripts/check_design.py）…"
 $PY scripts/check_design.py || fail
 echo "[pre-push] 設計檢查程式自測（scripts/test_check_design.py）…"
 $PY scripts/test_check_design.py || fail
+echo "[pre-push] 版本同步腳本離線測試（scripts/test_sync_tool_releases.py）…"
+$PY scripts/test_sync_tool_releases.py || fail
 echo "[pre-push] 自助部署前端測試（node --test）…"
 node --test scripts/test_deploy_frontend.mjs scripts/test_wizard_contract.mjs || fail
 echo "[pre-push] 通過"

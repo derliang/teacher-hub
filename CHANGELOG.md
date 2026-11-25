@@ -2,6 +2,12 @@
 
 此版號與日期只代表**入口網站**，不代表各工具程式的版本。
 
+## v1.23.0 — 2026-11-25
+- 新增「評語小幫手」**Beta** 卡（擁有者要求，2026-11-25），放在「立即可用」區，整張卡連到 https://derliang.github.io/comment-helper/ 。**分區理由**（PUBLISHING 第 1 節三問）：①使用者是一個人（導師自己評分、寫評語，沒有多人同時編修）；②純網頁，資料只存在使用者自己的瀏覽器，不連外部 AI、不經後端，GitHub Pages 可直接完整運作；③不需要 GAS。標 Beta 的理由：工具本身是 v0.6.1-beta，README 寫明評語仍需教師驗收（擁有者選定）。已親自開啟正式網址確認可載入。
+- 版本來源：評語小幫手建置時發布 `version.json`（`derliang/comment-helper` PR #1；`version` 只放數字 0.6.1，通道 beta 另欄），加入 `tools.json`（`dateFromVersionJson`），卡片加 `data-tool="comment-helper"`；之後該工具每次推上 main 部署，本站每 3 小時自動同步卡片版本。
+- 新增插畫 `images/cards/comment-helper.svg`（只含評分色塊、對話框與星號，無任何學生資料）。「立即可用」區與兩扇門件數由 7 變 8；首頁模擬頁同步；沒有新增頁面。
+- 修正版本同步：掃地工作小幫手 v2.14 的發版 commit 寫成「fix: …（v2.14）」，舊規則認不得，自 2026-11-24 起每次同步都標失敗。比對規則改為也接受括號內的版號，抽成 `is_cleaning_release()`，並新增離線測試 `scripts/test_sync_tool_releases.py`（已加入 pre-push）。
+
 ## v1.22.1 — 2026-11-20
 - 考務小幫手 GitHub repo 改名為 `exam-affairs-helper`（擁有者 2026-11-20），舊網址 `derliang.github.io/mock-exam-helper/` 已失效，首頁卡片連結、`tools.json` 的 id／source／versionJson、首頁備援版本文字與模擬頁一併改為新網址；版本同步 v1.26.38。
 

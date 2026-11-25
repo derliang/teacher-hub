@@ -48,6 +48,15 @@
       "versionJson": "https://derliang.github.io/exam-affairs-helper/version.json",
       "dateFromVersionJson": true,
       "dateEvidence": "version.json version and releaseDate"
+    },
+    {
+      "id": "comment-helper",
+      "version": "0.6.1",
+      "releaseDate": "2026-11-25",
+      "source": "https://github.com/derliang/comment-helper",
+      "versionJson": "https://derliang.github.io/comment-helper/version.json",
+      "dateFromVersionJson": true,
+      "dateEvidence": "version.json version and releaseDate"
     }
   ]
 }
