@@ -70,6 +70,12 @@ def latest_from_version_json(tool):
         raise ValueError("No commit found that sets the published version")
     return (*validate(v, taiwan_date(first["commit"]["committer"]["date"])), f"{path} version and the commit that first set it")
 
+def is_cleaning_release(message, version):
+    """Release commit for cleaning-helper: "Bump version to vX" / "release vX" / "版本 vX",
+    a message that starts with "vX", or one that tags the version in brackets, e.g. "fix: ...（vX）"."""
+    pattern = r"(?i)(?:(?:bump version|release|發版|版本).*?v|^v|[（(]v)" + re.escape(version) + r"(?![\d.])"
+    return re.search(pattern, message) is not None
+
 def latest(tool):
     repo = tool["id"]
     if repo not in BUILTIN:
@@ -84,9 +90,7 @@ def latest(tool):
         v = match(r"<title>[^<]*?v(\d+(?:\.\d+)+)</title>", html, "cleaning version")
         url = f"https://api.github.com/repos/derliang/{repo}/commits?path=index.html&per_page=100"
         commits = json.loads(fetch(url))
-        # Release commit: "Bump version to vX" style, or a message that starts with "vX".
-        pattern = r"(?i)(?:(?:bump version|release|發版|版本).*?v|^v)" + re.escape(v) + r"(?![\d.])"
-        releases = [c for c in commits if re.search(pattern, c["commit"]["message"])]
+        releases = [c for c in commits if is_cleaning_release(c["commit"]["message"], v)]
         if not releases:
             raise ValueError("No matching cleaning version-release commit in recent history")
         # Taiwan date (UTC+8), not the UTC date.

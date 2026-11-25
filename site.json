@@ -1,6 +1,6 @@
 {
   "name": "Teacher Hub｜教師小幫手",
-  "version": "1.22.1",
-  "updated": "2026-11-20",
-  "changes": "考務小幫手 repo 改名 exam-affairs-helper，卡片連結與版本來源改新網址，版號同步 v1.26.38。"
+  "version": "1.23.0",
+  "updated": "2026-11-25",
+  "changes": "新增評語小幫手（Beta，立即可用區），版本由其 version.json 自動同步；修正掃地工作小幫手版本同步失敗。"
 }
