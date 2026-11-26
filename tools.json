@@ -51,7 +51,7 @@
     },
     {
       "id": "comment-helper",
-      "version": "1.9.0",
+      "version": "1.11.0",
       "releaseDate": "2026-11-26",
       "source": "https://github.com/derliang/comment-helper",
       "versionJson": "https://derliang.github.io/comment-helper/version.json",
