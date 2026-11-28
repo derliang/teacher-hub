@@ -42,8 +42,8 @@
     },
     {
       "id": "exam-affairs-helper",
-      "version": "1.31.1",
-      "releaseDate": "2026-11-25",
+      "version": "1.31.3",
+      "releaseDate": "2026-11-29",
       "source": "https://github.com/derliang/exam-affairs-helper",
       "versionJson": "https://derliang.github.io/exam-affairs-helper/version.json",
       "dateFromVersionJson": true,
@@ -51,8 +51,8 @@
     },
     {
       "id": "comment-helper",
-      "version": "1.13.0",
-      "releaseDate": "2026-11-28",
+      "version": "1.14.1",
+      "releaseDate": "2026-11-29",
       "source": "https://github.com/derliang/comment-helper",
       "versionJson": "https://derliang.github.io/comment-helper/version.json",
       "dateFromVersionJson": true,
