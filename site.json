@@ -1,6 +1,6 @@
 {
   "name": "Teacher Hub｜教師小幫手",
-  "version": "1.23.0",
-  "updated": "2026-11-25",
-  "changes": "新增評語小幫手（Beta，立即可用區），版本由其 version.json 自動同步；修正掃地工作小幫手版本同步失敗。"
+  "version": "1.23.1",
+  "updated": "2026-11-28",
+  "changes": "評語小幫手由 Beta 升為即開即用，版本同步至 v1.13.0。"
 }
